@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Conferma autore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+	<div>
+    	<p th:text="'Nome: ' + ${autore.nome}" />
+    </div>
+	<div>
+    	<p th:text="'Cognome: ' + ${autore.cognome}" />
+    </div>
+	<div>
+    	<p th:text="'Nazionalit&agrave; : ' + ${autore.nazionalita}" />	
+    </div>
+	<div>
+    	<p th:text="'Data di nascita: ' + ${autore.dataNascita}" />	
+    </div>
+    	<div>
+    	<p th:text="'Data di morte: ' + ${autore.dataMorte}" />	
+    </div>
+</body>
+</html>
