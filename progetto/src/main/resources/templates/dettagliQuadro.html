@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text = "'Dettagli di: ' + ${quadro.titolo}">Insert title here</title>
+</head>
+<body>
+	<h1 th:text = "'Dettagli di: ' + ${quadro.titolo}">Quadro</h1>
+	<ul>
+		<li th:text = "'Anno di creazione: ' + ${quadro.anno}"></li>
+		<li th:text = "'Tecnica di creazione: ' + ${quadro.tecnica}"></li>
+		<li th:text = "'Dimensioni del quadro: ' + ${quadro.dimensioni}"></li>
+	</ul>
+</body>
+</html>
