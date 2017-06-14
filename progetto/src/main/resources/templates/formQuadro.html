@@ -30,15 +30,23 @@
 					th:if="${#fields.hasErrors('dimensioni')}"
 					th:text="#{label.mandatory}">Error</span>
 			</div>
-			<!-- <select th:field="*{autore}">
-				<option th:each="type : ${autori}" th:value="${autore}" </option>
-				th:text="#{${'seedstarter.type.' + type}}">Wireframe</option> 
-			</select> -->
+
+			<div>
+				<span th:text="#{label.autore}"> Autore: </span> <select
+					name="autoriEsistenti" id="autoUpdate" class="autoUpdate">
+					<option value="" th:disabled="true" th:selected="true">Seleziona
+						un autore...</option>
+					<option th:each="autore: ${autori}" th:value="${autore.id}"
+						th:text="${autore.nome} + ' ' + ${autore.cognome}" />
+				</select>
+			</div>
+
 			<div>
 				<span><button type="submit">Submit</button></span>
 			</div>
 		</div>
+
 	</form>
-	<a href="quadro">Lista Autori</a>
+
 </body>
 </html>

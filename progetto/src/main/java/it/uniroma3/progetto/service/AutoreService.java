@@ -1,7 +1,5 @@
 package it.uniroma3.progetto.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,10 +15,6 @@ public class AutoreService {
     private AutoreRepository autoreRepository; 
 
     public Iterable<Autore> findAll() {
-        return this.autoreRepository.findAll();
-    }
-    
-    public List<Autore> findAutori() {
         return this.autoreRepository.findAll();
     }
 
