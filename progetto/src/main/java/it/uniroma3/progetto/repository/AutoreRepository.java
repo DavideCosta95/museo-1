@@ -11,6 +11,6 @@ public interface AutoreRepository extends CrudRepository<Autore, Long> {
 
     List<Autore> findByNome(String nome);
     Autore findByCognome(String nome);
-    
+//    Autore merge(Autore autore);
 
 }

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -16,6 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome","cognome"}))
 public class Autore {
 
 

@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 		.authorizeRequests()
-			.antMatchers("/listaQuadri").permitAll()
+		.antMatchers("/listaQuadri", "/dettagli").permitAll()
 			.antMatchers("/formQuadro" , "/formAutore","/index").access("hasAuthority('ADMIN')")
 			.anyRequest().authenticated()
 		.and()

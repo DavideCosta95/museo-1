@@ -5,12 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import it.uniroma3.progetto.model.Autore;
 import it.uniroma3.progetto.model.Quadro;
 import it.uniroma3.progetto.service.QuadroService;
 
@@ -43,17 +40,12 @@ public class MainController {
 		return "listaQuadri";
 	}
 
-//	@GetMapping(value = "/dettagli")
-//	public String dettagliQuadro(@ModelAttribute("id") Long id, BindingResult results, Model model){
-////		
-////		if(results.hasErrors()){
-////			return "listaQuadri";
-////		}
-//		
-//		Quadro quadro = quadroService.findbyId(id);
-//		model.addAttribute(quadro);
-//		return "dettagliQuadro";
-//	}
+	@GetMapping(value = "/dettagli")
+	public String dettagliQuadro(@ModelAttribute("id") Long id, Model model){
+		Quadro quadro = quadroService.findbyId(id);
+		model.addAttribute(quadro);
+		return "dettagliQuadro";
+	}
 	
 
 }

@@ -20,40 +20,43 @@ import it.uniroma3.progetto.service.QuadroService;
 
 @Controller
 public class QuadroController  {
-	
-    @Autowired
-    private QuadroService quadroService; 
-    
-    @Autowired
-    private AutoreService autoreService;
-   
-    @GetMapping("/quadro")
-    public String showForm(Quadro quadro, Model model) {
-    	List<Autore> autori = (List<Autore>) autoreService.findAll(); 
-    	model.addAttribute("autori",autori);
-        return "formQuadro";
-    }
+
+	@Autowired
+	private QuadroService quadroService; 
+
+	@Autowired
+	private AutoreService autoreService;
+
+	@GetMapping("/quadro")
+	public String showForm(Quadro quadro, Model model) {
+		List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+		model.addAttribute("autori",autori);
+		return "formQuadro";
+	}
 
 
-    @PostMapping("/quadro")
-    public String checkQuadroInfo(@Valid @ModelAttribute Quadro quadro,
-    									BindingResult bindingResult, Model model,
-    									@RequestParam(value = "autoriEsistenti", required = false) Long autoriEsistenti) {
-        if (bindingResult.hasErrors()) { 
-            return "formQuadro";
-         
-        }
-        else {
-        	Autore aut= autoreService.findbyId(autoriEsistenti);
-        	quadro.setAutore(aut);
-        	model.addAttribute(quadro);
-        	model.addAttribute(aut);
-        	quadroService.add(quadro); 
-      
-        }
-        return "confermaQuadro";
-    }
-    
+	@PostMapping("/quadro")
+	public String checkQuadroInfo(@Valid @ModelAttribute Quadro quadro,
+			BindingResult bindingResult, Model model,
+			@RequestParam(value = "autoriEsistenti", required = false) Long autoriEsistenti) {
+		if (bindingResult.hasErrors()) { 
+			return "formQuadro";
+		}
+		else{
+			try{
+				Autore aut= autoreService.findById(autoriEsistenti);
+				quadro.setAutore(aut);
+				model.addAttribute(quadro);
+				quadroService.add(quadro); 
+			}catch(Exception e){
+				List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+				model.addAttribute("autori",autori);
+				return "formQuadro";
+			}
+		}
+		return "confermaQuadro";
+	}
+
 }
 
 

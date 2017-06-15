@@ -24,8 +24,11 @@ public class AutoreService {
         this.autoreRepository.save(autore);
     }
 
-	public Autore findbyId(Long id) {
+	public Autore findById(Long id) {
 		return this.autoreRepository.findOne(id);
 	}
-
+	
+	public Autore findByCognome(String cognome){
+		return this.autoreRepository.findByCognome(cognome);
+	}
 }
