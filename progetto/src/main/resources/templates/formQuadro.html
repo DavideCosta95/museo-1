@@ -33,7 +33,7 @@
 
 			<div>
 				<span th:text="#{label.autore}"> Autore: </span> <select
-					name="autoriEsistenti" id="autoUpdate" class="autoUpdate">
+					name="autore" id="autoUpdate" class="autoUpdate">			
 					<option value="" th:disabled="true" th:selected="true">Seleziona
 						un autore...</option>
 					<option th:each="autore: ${autori}" th:value="${autore.id}"

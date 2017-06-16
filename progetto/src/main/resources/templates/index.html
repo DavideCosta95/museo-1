@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+		<!--  div che funga da contenitore di tutti gli elementi del carousel e che deve avere le classi carousel e slide. -->
+		<div id="mioCarousel" class="carousel slide">
+
+			<!-- Una lista di elementi vuoti che costituiranno gli indicatori 
+		che segnalano all'utente quanti sono gli elementi del carosuel e qual'è quello attualmente visualizzato. -->
+			<ol class="carousel-indicators">
+				<li data-target="#mioCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#mioCarousel" data-slide-to="1"></li>
+				<li data-target="#mioCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<div class="carousel-inner">
+
+				<div class="item active">
+					<!-- Set the first background image using inline CSS below. -->
+					<img
+						th:src="@{https://www.cinquecosebelle.it/wp-content/uploads/2014/02/corvi1.jpg}"
+						width="100%" />
+					<div class="carousel-caption">
+						<h2>Galleria Belle Arti</h2>
+					</div>
+				</div>
+
+				<div class="item">
+					<!-- Set the second background image using inline CSS below. -->
+					<img
+						th:src="@{http://www.stilearte.it/wp-content/uploads/2016/01/Monet-papaveri-1873.jpg}"
+						width="100%" />
+					<div class="carousel-caption">
+						<h2>Galleria Belle Arti</h2>
+					</div>
+				</div>
+
+				<div class="item">
+					<!-- Set the third background image using inline CSS below. -->
+					<img
+						th:src="@{http://www.quizcaffe.it/wp-content/uploads/2015/07/minet-ninfee-3_risultato-679x328.jpg}"
+						width="100%" />
+					<div class="carousel-caption">
+						<h2>Galleria Belle Arti</h2>
+					</div>
+				</div>
+
+			</div>
+
+			<a class="left carousel-control" href="#mioCarousel"
+				data-slide="prev"> <span class="icon-prev"></span>
+			</a> <a class="right carousel-control" href="#mioCarousel"
+				data-slide="next"> <span class="icon-next"></span>
+			</a>
+			
+
+		</div>
+	<!-- Script to Activate the Carousel -->
+	<script>
+		$('.carousel').carousel({
+			interval : 5000
+		//changes the speed
+		})
+	</script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<p><a href="/login"> Entra </a></p>
+			<!--  row crea le colonne della grid -->
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/listaQuadri">Guarda la nostra collezione</a>
+			</div>
+		</div>
+</body>
+</html>

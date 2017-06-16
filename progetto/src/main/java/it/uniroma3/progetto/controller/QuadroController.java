@@ -1,5 +1,6 @@
 package it.uniroma3.progetto.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -38,15 +39,17 @@ public class QuadroController  {
 	@PostMapping("/quadro")
 	public String checkQuadroInfo(@Valid @ModelAttribute Quadro quadro,
 			BindingResult bindingResult, Model model,
-			@RequestParam(value = "autoriEsistenti", required = false) Long autoriEsistenti) {
+			@RequestParam(value = "autore", required = false) Long autore) {
 		if (bindingResult.hasErrors()) { 
+			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+			model.addAttribute("autori",autori);
 			return "formQuadro";
 		}
 		else{
 			try{
-				Autore aut= autoreService.findById(autoriEsistenti);
+				Autore aut= autoreService.findById(autore);
 				quadro.setAutore(aut);
-				model.addAttribute(quadro);
+				model.addAttribute("quadro",quadro);
 				quadroService.add(quadro); 
 			}catch(Exception e){
 				List<Autore> autori = (List<Autore>) autoreService.findAll(); 
@@ -57,6 +60,65 @@ public class QuadroController  {
 		return "confermaQuadro";
 	}
 
+
+	@GetMapping("/selezionaQuadro")
+	public String selezionaQuadro(Model model){
+		List<Quadro> quadri=(List<Quadro>) quadroService.findAll();
+		List<Autore> autori= (List<Autore>) autoreService.findAll();
+		if(quadri.isEmpty())
+			return "pannelloAmministratore";
+		model.addAttribute("autori",autori);
+		return "selezionaQuadro";
+	}
+
+	@PostMapping("/modificaQuadro")
+	public String modificaQuadro(@RequestParam(value = "autoreSelezionato") Long autoreSelezionatoID,
+			@RequestParam(value = "titoloQuadro") String titoloQuadroSelezionato, Model model){
+
+		List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+		Autore autoreSelezionato= autoreService.findById(autoreSelezionatoID);
+		List<Quadro> quadriAutoreSelezionato =autoreSelezionato.getQuadri();
+		Quadro quadroTrovato=null;
+
+		for(Quadro q:quadriAutoreSelezionato){
+			if(q.getTitolo().equals(titoloQuadroSelezionato)){
+				quadroTrovato=q;
+			}
+		}
+
+		model.addAttribute("autori",autori);
+
+		if(quadroTrovato!=null){
+			model.addAttribute("quadro",quadroTrovato);
+			return "modificaQuadroForm";
+		}else{
+			return "selezionaQuadro";
+		}
+	}
+
+	@PostMapping("/confermaModificaQuadro")
+	public String confermaModifica(@Valid @ModelAttribute Quadro quadro,Model model,BindingResult bindingResult,
+			@RequestParam(value = "id", required = false) Long autore){
+	
+		if(bindingResult.hasErrors()){
+			return "modificaQuadroForm";
+		}
+		else{
+			Autore a = autoreService.findById(autore);
+			quadro.setAutore(a);
+			model.addAttribute("quadro",quadro);
+			try{
+				quadroService.add(quadro);	
+				return "confermaQuadro";
+			}catch(Exception e){
+				return "modificaQuadroForm";
+			}
+		}
+	}
+
 }
+
+
+
 
 

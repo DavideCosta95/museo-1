@@ -49,6 +49,8 @@ public class AutoreController {
 	@GetMapping("/selezionaAutore")
 	public String selezionaAutore(Model model){
 		List<Autore> autori= (List<Autore>) autoreService.findAll();
+		if(autori.isEmpty())
+			return "pannelloAmministratore";
 		model.addAttribute("autori",autori);
 		return "selezionaAutore";
 	}
@@ -60,8 +62,8 @@ public class AutoreController {
 		return "modificaAutoreForm";
 	}
 
-	@PostMapping("/confermaModifica")
-	public String modificaAutore(@Valid @ModelAttribute Autore autore,Model model,BindingResult bindingResult){
+	@PostMapping("/confermaModificaAutore")
+	public String confermaModifica(@Valid @ModelAttribute Autore autore,Model model,BindingResult bindingResult){
 		if(bindingResult.hasErrors()){
 			return "modificaAutoreForm";
 		}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import it.uniroma3.progetto.model.Quadro;
 import it.uniroma3.progetto.service.QuadroService;
@@ -17,13 +18,29 @@ public class MainController {
 
 	@Autowired
 	private QuadroService quadroService; 
+	
+	@RequestMapping("/")
+	public String main() {
+		return "index";
+	}
 
 
 	// Login form
-	@RequestMapping("/login")
-	public String login() {
+	@PostMapping("/loginAmm")
+	public String pannelloAmministratore() {
+		return "pannelloAmministratore";
+	}
+	
+	@GetMapping("/loginAmm")
+	public String error() {
 		return "login";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "pannelloAmministratore";
+	}
+	
 
 	// Login form with error
 	@RequestMapping("/login-error.html")
