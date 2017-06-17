@@ -6,38 +6,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
 <link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> 
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 
 <body>
-	<!--  button -->
-	<p>
-		<a class="btn btn-lg bt-primary" href="/listaQuadri" role="button">
-			Guarda la nostra collezione</a>
-	</p>
-	
-	<p>
-		<a class="btn btn-lg bt-primary" href="/login" role="button">
-			Entra</a>
-	</p>
+
+	<!-- inverte i colori della barra -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Home</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Chi siamo</a></li>
+				<li><a href="#">Dove Siamo</a></li>
+				<li><a href="#">Contatti</a></li>
+			</ul>
+			<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/login"><span
+						class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
+			</ul>
+		</div>
+	</nav>
 
 	<!--  div che funga da contenitore di tutti gli elementi del carousel e che deve avere le classi carousel e slide. -->
 	<div id="mioCarousel" class="carousel slide">
 
-		<!-- Una lista di elementi vuoti che costituiranno gli indicatori 
-		che segnalano all'utente quanti sono gli elementi del carosuel e qual'è quello attualmente visualizzato. -->
-		<ol class="carousel-indicators">
-			<li data-target="#mioCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#mioCarousel" data-slide-to="1"></li>
-			<li data-target="#mioCarousel" data-slide-to="2"></li>
-		</ol>
-
 		<div class="carousel-inner">
+
+
+			<!-- Una lista di elementi vuoti che costituiranno gli indicatori 
+		che segnalano all'utente quanti sono gli elementi del carosuel e qual'è quello attualmente visualizzato. -->
+			<ol class="carousel-indicators">
+				<li data-target="#mioCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#mioCarousel" data-slide-to="1"></li>
+				<li data-target="#mioCarousel" data-slide-to="2"></li>
+			</ol>
 
 			<div class="item active">
 				<!-- Set the first background image using inline CSS below. -->
-				<img
-					src="../img/fb.png" 	width="100%" />
+				<img src="../img/1.png" width="100%" />
 				<div class="carousel-caption">
 					<h2>Galleria Belle Arti</h2>
 				</div>
@@ -45,9 +54,7 @@
 
 			<div class="item">
 				<!-- Set the second background image using inline CSS below. -->
-				<img
-					th:src="@{http://www.stilearte.it/wp-content/uploads/2016/01/Monet-papaveri-1873.jpg}"
-					width="100%" />
+				<img src="../img/2.png" width="100%" />
 				<div class="carousel-caption">
 					<h2>Galleria Belle Arti</h2>
 				</div>
@@ -55,9 +62,7 @@
 
 			<div class="item">
 				<!-- Set the third background image using inline CSS below. -->
-				<img
-					th:src="@{http://www.quizcaffe.it/wp-content/uploads/2015/07/minet-ninfee-3_risultato-679x328.jpg}"
-					width="100%" />
+				<img src="../img/3.png" width="100%" />
 				<div class="carousel-caption">
 					<h2>Galleria Belle Arti</h2>
 				</div>
@@ -65,15 +70,13 @@
 
 		</div>
 
-
 		<a class="left carousel-control" href="#mioCarousel" data-slide="prev">
 			<span class="icon-prev"></span>
 		</a> <a class="right carousel-control" href="#mioCarousel"
 			data-slide="next"> <span class="icon-next"></span>
 		</a>
-
-
 	</div>
+
 	<!-- Script to Activate the Carousel -->
 	<script>
 		$('.carousel').carousel({
