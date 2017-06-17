@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import it.uniroma3.progetto.model.Quadro;
+
 import it.uniroma3.progetto.service.QuadroService;
 
 // controller to access the login page
@@ -17,7 +19,8 @@ import it.uniroma3.progetto.service.QuadroService;
 public class MainController {
 
 	@Autowired
-	private QuadroService quadroService; 
+	private QuadroService quadroService;
+	
 	
 	@RequestMapping("/")
 	public String main() {

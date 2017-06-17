@@ -49,8 +49,10 @@ public class AutoreController {
 	@GetMapping("/selezionaAutore")
 	public String selezionaAutore(Model model){
 		List<Autore> autori= (List<Autore>) autoreService.findAll();
-		if(autori.isEmpty())
+		if(autori.isEmpty()){
+			model.addAttribute("nessunAutore2",true);
 			return "pannelloAmministratore";
+		}
 		model.addAttribute("autori",autori);
 		return "selezionaAutore";
 	}

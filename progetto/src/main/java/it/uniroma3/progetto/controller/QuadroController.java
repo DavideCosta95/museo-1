@@ -28,11 +28,15 @@ public class QuadroController  {
 
 	@GetMapping("/quadro")
 	public String showForm(Quadro quadro, Model model) {
-		List<Autore> autori = (List<Autore>) autoreService.findAll();
-		if(autori.isEmpty())
+		List<Autore> autori=(List<Autore>) autoreService.findAll();
+
+		if(autori.isEmpty()){
+			model.addAttribute("nessunAutore1",true);
 			return "pannelloAmministratore";
-		model.addAttribute("autori",autori);
-		return "formQuadro";
+		}else{
+			model.addAttribute("autori",autori);
+			return "formQuadro";
+		}
 	}
 
 	@PostMapping("/quadro")
@@ -74,8 +78,10 @@ public class QuadroController  {
 	public String selezionaQuadro(Model model){
 		List<Quadro> quadri=(List<Quadro>) quadroService.findAll();
 		List<Autore> autori= (List<Autore>) autoreService.findAll();
-		if(quadri.isEmpty())
+		if(quadri.isEmpty()){
+			model.addAttribute("nessunQuadro1",true);
 			return "pannelloAmministratore";
+		}
 		model.addAttribute("autori",autori);
 		return "selezionaQuadro";
 	}
