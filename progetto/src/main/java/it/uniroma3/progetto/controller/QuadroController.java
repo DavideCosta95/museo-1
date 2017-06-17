@@ -28,7 +28,9 @@ public class QuadroController  {
 
 	@GetMapping("/quadro")
 	public String showForm(Quadro quadro, Model model) {
-		List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+		List<Autore> autori = (List<Autore>) autoreService.findAll();
+		if(autori.isEmpty())
+			return "pannelloAmministratore";
 		model.addAttribute("autori",autori);
 		return "formQuadro";
 	}
@@ -36,15 +38,25 @@ public class QuadroController  {
 	@PostMapping("/quadro")
 	public String checkQuadroInfo(@Valid @ModelAttribute Quadro quadro,
 			BindingResult bindingResult, Model model,
-			@RequestParam(value = "autore", required = false) Long autore) {
+			@RequestParam(value = "autore") Long autoreID) {
 		if (bindingResult.hasErrors()) { 
 			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
 			model.addAttribute("autori",autori);
+			model.addAttribute("quadro", quadro);
+			model.addAttribute("autore", autoreID);
+			return "formQuadro";
+		}
+		else if(autoreID<0){
+			List<Autore> autori = (List<Autore>) autoreService.findAll();
+			model.addAttribute("autori",autori);
+			model.addAttribute("quadro", quadro);
+			model.addAttribute("autore", autoreID);
+			model.addAttribute("erroreAutore", true);
 			return "formQuadro";
 		}
 		else{
 			try{
-				Autore aut= autoreService.findById(autore);
+				Autore aut= autoreService.findById(autoreID);
 				quadro.setAutore(aut);
 				model.addAttribute("quadro",quadro);
 				quadroService.add(quadro); 
@@ -94,10 +106,12 @@ public class QuadroController  {
 	}
 
 	@PostMapping("/confermaModificaQuadro")
-	public String confermaModifica(@Valid @ModelAttribute Quadro quadro,Model model,BindingResult bindingResult,
+	public String confermaModifica(@Valid @ModelAttribute Quadro quadro,BindingResult bindingResult, Model model,
 			@RequestParam(value = "id", required = false) Long autore){
-	
+
 		if(bindingResult.hasErrors()){
+			List<Autore> autori= (List<Autore>) autoreService.findAll();
+			model.addAttribute("autori",autori);
 			return "modificaQuadroForm";
 		}
 		else{

@@ -38,6 +38,7 @@
 					th:if="${#fields.hasErrors('nazionalita')}"
 					th:text="#{label.mandatory}">Error</span>
 			</div>
+			<input type="hidden" value="${autore.id}" th:field="*{id}"/> 
 			<div>
 				<span><button type="submit">Submit</button></span>
 			</div>

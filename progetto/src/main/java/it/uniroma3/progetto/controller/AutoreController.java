@@ -22,7 +22,6 @@ public class AutoreController {
 	@Autowired 
 	private AutoreService autoreService;
 
-
 	@GetMapping("/autore")
 	public String showForm(Autore autore) {
 		return "formAutore";
@@ -30,15 +29,17 @@ public class AutoreController {
 
 	@PostMapping("/autore")
 	public String checkAutoreInfo(@Valid @ModelAttribute Autore autore, 
-			BindingResult bindingResult) {
+			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("autore", autore);
 			return "formAutore";
 		}
 		else {
 			try{
 				autoreService.add(autore);
 			}catch(Exception e){
+				model.addAttribute("autore", autore);
 				return "formAutore";
 			}
 		}
@@ -55,7 +56,13 @@ public class AutoreController {
 	}
 
 	@PostMapping("/modificaAutore")
-	public String modificaAutore(@RequestParam(value = "autoreSelezionato") Long autoreSelezionatoID, Model model){
+	public String modificaAutore(@RequestParam(value = "autoreSelezionato", required=true) Long autoreSelezionatoID, Model model){
+		if(autoreSelezionatoID<0){
+			model.addAttribute("erroreAutore", true);
+			List<Autore> autori= (List<Autore>) autoreService.findAll();
+			model.addAttribute("autori",autori);
+			return "selezionaAutore";
+		}
 		Autore autore= autoreService.findById(autoreSelezionatoID);
 		model.addAttribute("autore",autore);
 		return "modificaAutoreForm";

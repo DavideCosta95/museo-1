@@ -27,15 +27,14 @@
 			<div>
 				<span th:text="#{label.dimensioni}"> Dimensioni: </span>
 				<span><input type="text" th:field="*{dimensioni}" /></span>
-
 				<span th:if="${#fields.hasErrors('dimensioni')}" th:text="#{label.mandatory}">Error</span>
 			</div>
 
 			<div>
 				<span th:text="#{label.autore}"> Autore: </span>
 				<select name="autore" id="autoUpdate" class="autoUpdate">			
-					<option value="" th:if="${quadro.autore==null}" th:disabled="false" th:selected="true">Seleziona un autore</option>
-					<option value="" th:if="${quadro.autore!=null}" th:disabled="true" th:selected="true" th:text="${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}"></option>
+					<option value="-1" th:if="${quadro.autore==null}" th:disabled="false" th:selected="true">Seleziona un autore</option>
+					<option value="${quadro.autore.id}" th:if="${quadro.autore!=null}" th:disabled="true" th:selected="true" th:text="${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}"></option>
 					<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 				</select>
 			</div>
