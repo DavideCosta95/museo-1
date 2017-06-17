@@ -12,7 +12,11 @@
 <script type="text/javascript">
 	//nasconde i messaggi di conferma dopo 2 secondi
 	var fade_out = function() {
-			 $("#nessunAutore").fadeOut(); 
+			 $("#nessunAutore1").fadeOut(); 
+			 $("#nessunAutore2").fadeOut();  
+			 $("#nessunAutore3").fadeOut(); 
+			 $("#nessunQuadro1").fadeOut(); 
+			 $("#nessunQuadro2").fadeOut(); 
 		}
 		
 	}
@@ -49,33 +53,45 @@
 		<div class="row">
 			<div class="col-md-4">
 			<a href="/quadro"> Inserisci un nuovo quadro </a>
-				<span th:if="${autori==null}"
+				<span th:if="${nessunAutore1}"
 					style="margin-left: 5px; display: inline-block; color: red;"
-					id="nessunAutore"> Nessun autore! </span>
+					id="nessunAutore1"> Nessun autore! </span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/selezionaAutore"> Modifica un autore </a>
+					<span th:if="${nessunAutore2}"
+					style="margin-left: 5px; display: inline-block; color: red;"
+					id="nessunAutore2"> Nessun autore! </span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/selezionaQuadro"> Modifica un quadro </a>
+					<span th:if="${nessunQuadro1}"
+					style="margin-left: 5px; display: inline-block; color: red;"
+					id="nessunQuadro1"> Nessun quadro! </span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/eliminaQuadro"> Elimina un quadro </a>
+					<span th:if="${nessunQuadro2}"
+					style="margin-left: 5px; display: inline-block; color: red;"
+					id="nessunQuadro2"> Nessun quadro! </span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/eliminaAutore"> Elimina un autore </a>
+					<span th:if="${nessunAutore3}"
+					style="margin-left: 5px; display: inline-block; color: red;"
+					id="nessunAutore3"> Nessun autore! </span>
 			</div>
 		</div>
 	</div>
