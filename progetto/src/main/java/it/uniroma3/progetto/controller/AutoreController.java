@@ -30,15 +30,14 @@ public class AutoreController {
 
 	@PostMapping("/autore")
 	public String checkAutoreInfo(@Valid @ModelAttribute Autore autore, 
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return "formAutore";
 		}
 		else {
-			model.addAttribute(autore);
 			try{
-				autoreService.add(autore); 
+				autoreService.add(autore);
 			}catch(Exception e){
 				return "formAutore";
 			}
@@ -56,27 +55,28 @@ public class AutoreController {
 	}
 
 	@PostMapping("/modificaAutore")
-	public String modificaAutore(@RequestParam(value = "autoriEsistenti") Long autoreSelezionatoID, Model model){
+	public String modificaAutore(@RequestParam(value = "autoreSelezionato") Long autoreSelezionatoID, Model model){
 		Autore autore= autoreService.findById(autoreSelezionatoID);
-		model.addAttribute("autoreSelezionato",autore);
+		model.addAttribute("autore",autore);
 		return "modificaAutoreForm";
 	}
-
+	
 	@PostMapping("/confermaModificaAutore")
-	public String confermaModifica(@Valid @ModelAttribute Autore autore,Model model,BindingResult bindingResult){
+	public String confermaModifica(@Valid @ModelAttribute Autore autore,BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()){
+			model.addAttribute("autore",autore);
 			return "modificaAutoreForm";
 		}
 		else
 		{
 			try{
+				model.addAttribute("autore",autore);
 				autoreService.add(autore);
 				return "confermaAutore";
 			}catch(Exception e){
-				model.addAttribute("autoreSelezionato",autore);
+				model.addAttribute("autore",autore);
 				return "modificaAutoreForm";
 			}
 		}
 	}
-
 }

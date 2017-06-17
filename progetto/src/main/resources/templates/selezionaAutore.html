@@ -5,11 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="#" th:action="@{/modificaAutore}" th:object="${autore}"
+	<form action="#" th:action="@{/modificaAutore}" 
 		method="post">
 		<div>
 			<span th:text="#{label.autore}"> Autore: </span> 
-			<select name="autoriEsistenti" id="autoUpdate" class="autoUpdate">
+			<select name="autoreSelezionato" id="autoUpdate" class="autoUpdate">
 				<option value="" th:disabled="true" th:selected="true">Seleziona un autore...</option>
 				<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 			</select>

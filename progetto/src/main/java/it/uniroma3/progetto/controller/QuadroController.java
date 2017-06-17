@@ -33,7 +33,6 @@ public class QuadroController  {
 		return "formQuadro";
 	}
 
-
 	@PostMapping("/quadro")
 	public String checkQuadroInfo(@Valid @ModelAttribute Quadro quadro,
 			BindingResult bindingResult, Model model,
