@@ -3,12 +3,13 @@
 <head>
 <title>New Autore</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link href="../css/form.css" rel="stylesheet" />
 </head>
 <body>
-	
+
 	<!-- inverte i colori della barra -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -28,81 +29,82 @@
 		</div>
 	</nav>
 	<div class="container">
-	
-	
-	
-	
-	
-	
-	
-<!--    <div class="form-group has-success has-feedback">
-    <label class="col-sm-2 control-label" for="inputSuccess">
-    Input with success and icon</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputSuccess"/>
-      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-    </div>
-  </div>
-  -->
-  
-  
-  
-  
-		<form action="#" th:action="@{/autore}" th:object="${autore}"
-			method="post">
-			<div class="form-group" >
-				<div>
-					<span th:text="#{label.nome}"> Nome: </span> <span><input
-						type="text" th:field="*{nome}" /></span> <span
-						th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}">Error</span>
-				</div>
-			</div>
+
+
+		<div class="page-header">
+			<h1>Inserimento nuovo autore</h1>
+		</div>
+
+		<form class="form-horizontal" action="#" th:action="@{/autore}"
+			th:object="${autore}" method="post">
 
 			<div class="form-group">
-				<div>
-					<span th:text="#{label.cognome}"> Cognome: </span> <span><input
-						type="text" th:field="*{cognome}" /></span> <span
+
+				<label class="control-label col-sm-2" for="#{label.nome}">
+					Nome:</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{nome}" /> <span
+						th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}"
+						style="color: #5079B4; font-weight: bold">Error</span>
+				</div>
+
+			</div>
+
+
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="#{label.cognome}">
+					Cognome: </label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{cognome}" /> <span
 						th:if="${#fields.hasErrors('cognome')}"
-						th:text="#{label.mandatory}">Error</span>
+						th:text="#{label.mandatory}"
+						style="color: #5079B4; font-weight: bold">Error</span>
 				</div>
+
 			</div>
 
 			<div class="form-group">
-				<div>
-					<span th:text="#{label.dataNascita}">Data di nascita: </span> <span><input
-						type="text" th:field="*{dataNascita}" /></span> <span
+				<label class="control-label col-sm-2" for="#{label.dataNascita}">Data
+					di nascita: </label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{dataNascita}" /> <span
 						th:if="${#fields.hasErrors('dataNascita')}"
-						th:text="#{label.data}">Error</span>
+						th:text="#{label.data}" style="color: #5079B4; font-weight: bold">Error</span>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div>
-					<span th:text="#{label.dataMorte}"> Data di morte: </span> <span><input
-						type="text" th:field="*{dataMorte}" /></span> <span
-						th:if="${#fields.hasErrors('dataMorte')}" th:text="#{label.data}">Error</span>
+				<label class="control-label col-sm-2" for="#{label.dataMorte}">
+					Data di morte: </label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{dataMorte}" /> <span
+						th:if="${#fields.hasErrors('dataMorte')}" th:text="#{label.data}"
+						style="color: #5079B4; font-weight: bold">Error</span>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div>
-					<span > Nazionalit&agrave; : </span> <span><input
-						type="text" th:field="*{nazionalita}" /></span> <span
+				<label class="control-label col-sm-2"> Nazionalit&agrave; :
+				</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{nazionalita}" /> <span
 						th:if="${#fields.hasErrors('nazionalita')}"
-						th:text="#{label.mandatory}">Error</span>
+						th:text="#{label.mandatory}"
+						style="color: #5079B4; font-weight: bold">Error</span>
 				</div>
-
 			</div>
 
-			<div>
-				<span><button type="submit" class="btn btn-default">Submit</button></span>
+			 <div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-info active" style="background-color:#5079B4;">Inserisci</button>
 			</div>
 
 			<input type="hidden" value="${autore.id}" th:field="*{id}" />
 		</form>
 	</div>
-	
-		<script
+
+	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
