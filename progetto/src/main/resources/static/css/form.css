@@ -28,3 +28,8 @@ select{
 	margin-left:1em;
 
 }
+
+p{
+	color:white;
+	font-weight: bold;
+}
