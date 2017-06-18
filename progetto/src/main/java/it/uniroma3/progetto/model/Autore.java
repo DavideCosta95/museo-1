@@ -3,6 +3,7 @@ package it.uniroma3.progetto.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,7 +48,7 @@ public class Autore {
 	private Date dataMorte;
 	
 	@Autowired
-	@OneToMany(mappedBy="autore")
+	@OneToMany(mappedBy="autore", cascade= {CascadeType.REMOVE})
 	private List<Quadro> quadri;
  
 	protected Autore() {}

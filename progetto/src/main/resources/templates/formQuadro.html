@@ -1,50 +1,47 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>New Quadro</title>
+<title th:text="${titolo}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="#" th:action="@{/quadro}" th:object="${quadro}"
-		method="post">
+    <div>
+    	<p th:text="${testo}" />
+    </div>
+	<form action="#" th:action="@{${action}}" th:object="${quadro}" method="post">
 		<div>
 			<div>
-				<span th:text="#{label.titolo}"> Titolo: </span> <span><input
-					type="text" th:field="*{titolo}" /></span> <span
-					th:if="${#fields.hasErrors('titolo')}" th:text="#{label.mandatory}">Error</span>
+				<span th:text="#{label.titolo}"> Titolo:</span>
+				<span><input type="text" th:field="*{titolo}" /></span>
+				<span th:if="${#fields.hasErrors('titolo')}" th:text="#{label.mandatory}">Error</span>
 			</div>
 			<div>
-				<span th:text="#{label.anno}">Anno: </span> <span><input
-					type="text" th:field="*{anno}" /></span> <span
-					th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}">Error</span>
+				<span th:text="#{label.anno}">Anno:</span>
+				<span><input type="text" th:field="*{anno}" /></span>
+				<span th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}">Error</span>
 			</div>
 			<div>
-				<span th:text="#{label.tecnica}">Tecnica: </span> <span><input
-					type="text" th:field="*{tecnica}" /></span> <span
-					th:if="${#fields.hasErrors('tecnica')}"
-					th:text="#{label.mandatory}">Error</span>
+				<span th:text="#{label.tecnica}">Tecnica:</span>
+				<span><input type="text" th:field="*{tecnica}" /></span>
+				<span th:if="${#fields.hasErrors('tecnica')}" th:text="#{label.mandatory}">Error</span>
 			</div>
 			<div>
-				<span th:text="#{label.dimensioni}"> Dimensioni: </span>
+				<span th:text="#{label.dimensioni}"> Dimensioni:</span>
 				<span><input type="text" th:field="*{dimensioni}" /></span>
 				<span th:if="${#fields.hasErrors('dimensioni')}" th:text="#{label.mandatory}">Error</span>
 			</div>
-
 			<div>
-				<span th:text="#{label.autore}"> Autore: </span>
+				<span th:text="#{label.autore}"> Autore:</span>
 				<select name="autore" id="autoUpdate" class="autoUpdate">			
-					<option value="-1" th:if="${quadro.autore==null}" th:disabled="false" th:selected="true">Seleziona un autore</option>
-					<option value="${quadro.autore.id}" th:if="${quadro.autore!=null}" th:disabled="true" th:selected="true" th:text="${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}"></option>
+					<option value="" th:disabled="true" th:selected="true">Seleziona un autore...</option>
 					<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 				</select>
 			</div>
-
 			<div>
-				<span><button type="submit">Submit</button></span>
+				<span><button type="submit" th:text="${testoBottone}"></button></span>
 			</div>
 		</div>
-
+		<input type="hidden" value="${quadro.autore.id}" th:field="*{id}" name="id"/> 
 	</form>
-
 </body>
 </html>

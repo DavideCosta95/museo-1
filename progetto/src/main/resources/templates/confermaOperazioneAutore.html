@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${titolo}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+    	<div>
+    	<p th:text="${testo}" />
+    </div>
+	<div>
+    	<p th:text="'Nome: ' + ${autore.nome}" />
+    </div>
+	<div>
+    	<p th:text="'Cognome: ' + ${autore.cognome}" />
+    </div>
+	<div>
+    	<p th:text="'Nazionalit&agrave; : ' + ${autore.nazionalita}" />
+    </div>
+	<div>
+    	<p th:text="'Data di nascita: ' + ${autore.dataNascita}" />	
+    </div>
+    	<div>
+    	<p th:text="'Data di morte: ' + ${autore.dataMorte}" />	
+    </div>
+    <div> 
+    	<form action="#" th:action="@{/login}" method="get">
+   			<button type="submit" class="btn btn-default">Ok</button>
+		</form>
+	</div>
+</body>
+</html>

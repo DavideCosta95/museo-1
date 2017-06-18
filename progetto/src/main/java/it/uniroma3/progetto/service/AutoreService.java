@@ -31,4 +31,9 @@ public class AutoreService {
 	public Autore findByCognome(String cognome){
 		return this.autoreRepository.findByCognome(cognome);
 	}
+	
+	@Transactional
+	public void delete(Autore autore){
+		this.autoreRepository.delete(autore);
+	}
 }

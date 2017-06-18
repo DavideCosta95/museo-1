@@ -1,12 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>New Autore</title>
+<title>Modifica autore</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="#" th:action="@{/confermaModificaAutore}" th:object="${autore}"
-		method="post">
+	<form action="#" th:action="@{/confermaModificaAutore}" th:object="${autore}" method="post">
 		<div>
 			<div>
 				<span th:text="#{label.nome}"> Nome: </span> <span><input
@@ -33,13 +32,11 @@
                 </div> 
  
 			<div>
-				<span th:text="#{label.naziolita}">Nazionalit&agrave;: </span> <span><input
-					type="text" th:field="*{nazionalita}" /></span> <span
-					th:if="${#fields.hasErrors('nazionalita')}"
-					th:text="#{label.mandatory}">Error</span>
+				<span>Nazionalit&agrave;: </span> <span><input type="text" th:field="*{nazionalita}" /></span>
+				<span th:if="${#fields.hasErrors('nazionalita')}" th:text="#{label.mandatory}">Error</span>
 			</div>
 			<div>
-				<span><button type="submit">Submit</button></span>
+				<span><button type="submit">Modifica</button></span>
 			</div>
 		</div>
 		<input type="hidden" value="${autore.id}" th:field="*{id}"/> 
