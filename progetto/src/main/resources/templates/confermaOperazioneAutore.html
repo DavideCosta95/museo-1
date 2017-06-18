@@ -18,10 +18,10 @@
     	<p th:text="'Nazionalit&agrave; : ' + ${autore.nazionalita}" />
     </div>
 	<div>
-    	<p th:text="'Data di nascita: ' + ${autore.dataNascita}" />	
+    	<p th:text="'Data di nascita: ' + ${autore.dataNascita.date} + '/' + (${autore.dataNascita.month}+1) + '/' + (${autore.dataNascita.year}+1900)" />
     </div>
     	<div>
-    	<p th:text="'Data di morte: ' + ${autore.dataMorte}" />	
+    	  <p th:text="'Data di morte: ' + ${autore.dataMorte.date} + '/' + (${autore.dataMorte.month}+1) + '/' + (${autore.dataMorte.year}+1900)" />
     </div>
     <div> 
     	<form action="#" th:action="@{/login}" method="get">

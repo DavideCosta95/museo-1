@@ -27,7 +27,7 @@ public class QuadroController  {
 	private AutoreService autoreService;
 
 	@GetMapping("/inserisciQuadro")
-	public String showForm(Quadro quadro, Model model) {
+	public String mostraFormQuadro(Quadro quadro, Model model) {
 		List<Autore> autori=(List<Autore>) autoreService.findAll();
 
 		if(autori.isEmpty()){
@@ -44,9 +44,9 @@ public class QuadroController  {
 	}
 
 	@PostMapping("/inserisciQuadro")
-	public String checkQuadroInfo(@Valid @ModelAttribute Quadro quadro,
-			BindingResult bindingResult, Model model,
+	public String convalidaQuadro(@Valid @ModelAttribute Quadro quadro, BindingResult bindingResult, Model model,
 			@RequestParam(value = "autore") Long autoreID) {
+		
 		if (bindingResult.hasErrors() || autoreID<0) { 
 			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
 			model.addAttribute("autori",autori);
@@ -65,7 +65,10 @@ public class QuadroController  {
 				Autore autore = autoreService.findById(autoreID);
 				quadro.setAutore(autore);
 				model.addAttribute("quadro",quadro);
-				quadroService.add(quadro); 
+				quadroService.add(quadro);
+				model.addAttribute("testo", "Quadro inserito:");
+				model.addAttribute("titolo", "Quadro inserito");
+				return "confermaOperazioneQuadro";
 			}catch(Exception e){
 				List<Autore> autori = (List<Autore>) autoreService.findAll(); 
 				model.addAttribute("autori",autori);
@@ -78,15 +81,14 @@ public class QuadroController  {
 				return "formQuadro";
 			}
 		}
-		return "confermaQuadro";
 	}
 
 
 	@GetMapping("/modificaQuadro")
 	public String mostraFormModificaQuadro(Model model){
-		List<Quadro> quadri=(List<Quadro>) quadroService.findAll();
-		List<Autore> autori= (List<Autore>) autoreService.findAll();
-		if(quadri.isEmpty()){
+		List<Quadro> quadri = (List<Quadro>) quadroService.findAll();
+		List<Autore> autori = (List<Autore>) autoreService.findAll();
+		if (quadri.isEmpty()) {
 			model.addAttribute("nessunQuadroModificaQuadro",true);
 			return "pannelloAmministratore";
 		}
@@ -155,8 +157,10 @@ public class QuadroController  {
 			quadro.setAutore(a);
 			model.addAttribute("quadro",quadro);
 			try{
-				quadroService.add(quadro);	
-				return "confermaQuadro";
+				quadroService.add(quadro);
+				model.addAttribute("testo", "Nuovi dati del quadro:");
+				model.addAttribute("titolo", "Quadro modificato:");
+				return "confermaOperazioneQuadro";
 			}catch(Exception e){
 				model.addAttribute("action", "/confermaModificaQuadro");
 				model.addAttribute("testo", "Modifica quadro:");

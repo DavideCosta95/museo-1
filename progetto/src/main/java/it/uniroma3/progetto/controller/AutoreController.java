@@ -22,28 +22,43 @@ public class AutoreController {
 	@Autowired 
 	private AutoreService autoreService;
 
-	@GetMapping("/autore")
-	public String showForm(Autore autore) {
+	@GetMapping("/autore")//cambia come sotto
+	public String mostraFormAutore(Autore autore, Model model) {
+		model.addAttribute("action", "/inserisciAutore");
+		model.addAttribute("testo", "Inserisci un nuovo autore:");
+		model.addAttribute("titolo", "Nuovo autore");
+		model.addAttribute("testoBottone", "Inserisci");
 		return "formAutore";
 	}
 
-	@PostMapping("/autore")
-	public String checkAutoreInfo(@Valid @ModelAttribute Autore autore, BindingResult bindingResult, Model model) {
+	@PostMapping("/inserisciAutore")
+	public String convalidaAutore(@Valid @ModelAttribute Autore autore, BindingResult bindingResult, Model model) {
+		model.addAttribute("autore", autore);
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("autore", autore);
+			model.addAttribute("action", "/inserisciAutore");
+			model.addAttribute("testo", "Inserisci un nuovo autore:");
+			model.addAttribute("titolo", "Nuovo autore");
+			model.addAttribute("testoBottone", "Inserisci");
 			return "formAutore";
 		}
 		else {
 			try{
 				autoreService.add(autore);
-			}catch(Exception e){
-				model.addAttribute("autore", autore);
+				model.addAttribute("autore",autore);
+				model.addAttribute("testo", "Autore inserito:");
+				model.addAttribute("titolo", "Autore inserito");
+				model.addAttribute("testoBottone", "Inserisci");
+				model.addAttribute("titolo", "Autore inserito");
+				model.addAttribute("testo", "Hai inserito l'autore:");
+				return "confermaOperazioneAutore";
+			}catch(Exception e) {
+				model.addAttribute("action", "/inserisciAutore");
+				model.addAttribute("testo", "Inserisci un nuovo autore:");
+				model.addAttribute("titolo", "Nuovo autore");
+				model.addAttribute("testoBottone", "Inserisci");
 				return "formAutore";
 			}
 		}
-		model.addAttribute("titolo", "Autore inserito");
-		model.addAttribute("testo", "Hai inserito l'autore:");
-		return "confermaOperazioneAutore";
 	} 
 
 	@GetMapping("/selezionaAutore")
@@ -65,20 +80,32 @@ public class AutoreController {
 	public String modificaAutore(@RequestParam(value = "autoreSelezionato", required=true) Long autoreSelezionatoID, Model model){
 		if(autoreSelezionatoID<0){
 			model.addAttribute("erroreAutore", true);
-			List<Autore> autori= (List<Autore>) autoreService.findAll();
+			List<Autore> autori = (List<Autore>) autoreService.findAll();
 			model.addAttribute("autori",autori);
+			model.addAttribute("action", "/modificaAutore");
+			model.addAttribute("testo", "Seleziona autore:");
+			model.addAttribute("titolo", "Seleziona autore");
+			model.addAttribute("testoBottone", "Seleziona");
 			return "selezionaAutore";
 		}
 		Autore autore= autoreService.findById(autoreSelezionatoID);
 		model.addAttribute("autore",autore);
-		return "modificaAutoreForm";
+		model.addAttribute("action", "/confermaModificaAutore");
+		model.addAttribute("testo", "Modifica autore:");
+		model.addAttribute("titolo", "Modifica autore");
+		model.addAttribute("testoBottone", "Modifica");
+		return "formAutore";
 	}
 	
 	@PostMapping("/confermaModificaAutore")
 	public String confermaModifica(@Valid @ModelAttribute Autore autore,BindingResult bindingResult, Model model){
-		if(bindingResult.hasErrors()){
+		if(bindingResult.hasErrors()) {
 			model.addAttribute("autore",autore);
-			return "modificaAutoreForm";
+			model.addAttribute("action", "/confermaModificaAutore");
+			model.addAttribute("testo", "Modifica autore:");
+			model.addAttribute("titolo", "Modifica autore");
+			model.addAttribute("testoBottone", "Modifica");
+			return "formAutore";
 		}
 		else
 		{
