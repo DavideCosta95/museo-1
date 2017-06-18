@@ -40,7 +40,7 @@ public class MainController {
 		return "login";
 	}
 	
-	@GetMapping("/login")
+	@RequestMapping("/login")
 	public String login() {
 		return "pannelloAmministratore";
 	}

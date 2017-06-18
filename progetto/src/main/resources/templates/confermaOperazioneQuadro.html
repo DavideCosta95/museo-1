@@ -1,8 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <title>Conferma quadro</title>
+    <title th:text="${titolo}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <body>
+    <div>
+    	<p th:text="${testo}" />
+    </div>
 	<div>
     	<p th:text="'Titolo: ' + ${quadro.titolo}" />
     </div>

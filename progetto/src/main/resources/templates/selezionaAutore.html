@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Modifica Autore</title>
+<title th:text="${titolo}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="#" th:action="@{/modificaAutore}"
-		method="post">
+	<div>
+    	<p th:text="${testo}" />
+    </div>
+	<form action="#" th:action="@{${action}}" method="post">
 		<div>
 			<span th:text="#{label.autore}"> Autore: </span>
 			<select name="autoreSelezionato" id="autoUpdate" class="autoUpdate">
@@ -15,7 +17,7 @@
 			</select>
 		</div>
 		<div>
-			<span><button type="submit">Modifica</button></span>
+			<span><button type="submit" th:text="${testoBottone}"></button></span>
 		</div>
 	</form>
 </body>

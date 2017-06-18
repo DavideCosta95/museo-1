@@ -28,9 +28,7 @@ public class AutoreController {
 	}
 
 	@PostMapping("/autore")
-	public String checkAutoreInfo(@Valid @ModelAttribute Autore autore, 
-			BindingResult bindingResult, Model model) {
-
+	public String checkAutoreInfo(@Valid @ModelAttribute Autore autore, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("autore", autore);
 			return "formAutore";
@@ -43,17 +41,23 @@ public class AutoreController {
 				return "formAutore";
 			}
 		}
-		return "confermaAutore";
+		model.addAttribute("titolo", "Autore inserito");
+		model.addAttribute("testo", "Hai inserito l'autore:");
+		return "confermaOperazioneAutore";
 	} 
 
 	@GetMapping("/selezionaAutore")
 	public String selezionaAutore(Model model){
 		List<Autore> autori= (List<Autore>) autoreService.findAll();
 		if(autori.isEmpty()){
-			model.addAttribute("nessunAutore2",true);
+			model.addAttribute("nessunAutoreModificaAutore",true);
 			return "pannelloAmministratore";
 		}
 		model.addAttribute("autori",autori);
+		model.addAttribute("action", "/modificaAutore");
+		model.addAttribute("testo", "Modifica autore:");
+		model.addAttribute("titolo", "Modifica autore");
+		model.addAttribute("testoBottone", "Modifica");
 		return "selezionaAutore";
 	}
 
@@ -81,11 +85,40 @@ public class AutoreController {
 			try{
 				model.addAttribute("autore",autore);
 				autoreService.add(autore);
-				return "confermaAutore";
+				model.addAttribute("titolo", "Autore modificato");
+				model.addAttribute("testo", "Nuovi dati dell'autore:");
+				return "confermaOperazioneAutore";
 			}catch(Exception e){
 				model.addAttribute("autore",autore);
 				return "modificaAutoreForm";
 			}
 		}
 	}
+	
+	@GetMapping("/eliminaAutore")
+	public String mostraFormEliminaAutore(Model model){
+		List<Autore> autori= (List<Autore>) autoreService.findAll();
+		if(autori.isEmpty()){
+			model.addAttribute("nessunAutoreEliminaAutore",true);
+			return "pannelloAmministratore";
+		}
+		model.addAttribute("autori",autori);
+		model.addAttribute("action", "/eliminaAutore");
+		model.addAttribute("testoBottone", "Elimina");
+		model.addAttribute("testo", "Elimina autore:");
+		model.addAttribute("titolo", "Elimina autore");
+		return "selezionaAutore";
+	}
+	
+	@PostMapping("/eliminaAutore")
+	public String eliminaAutore(@RequestParam(value = "autoreSelezionato", required=true) Long autoreSelezionatoID, Model model){
+		Autore autore = autoreService.findById(autoreSelezionatoID);
+		autoreService.delete(autore);
+		model.addAttribute("autore", autore);
+		model.addAttribute("titolo", "Autore eliminato");
+		model.addAttribute("testo", "Hai eliminato l'autore:");
+		return "confermaOperazioneAutore";
+	}
+	
+	
 }
