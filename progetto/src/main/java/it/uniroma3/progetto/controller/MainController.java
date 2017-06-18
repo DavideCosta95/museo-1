@@ -2,7 +2,6 @@ package it.uniroma3.progetto.controller;
 
 import java.util.List;
 
-import org.hibernate.annotations.Fetch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

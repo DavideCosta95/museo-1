@@ -3,20 +3,20 @@
 	xmlns:tiles="http://www.thymeleaf.org">
 <head>
 <title>Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 <link href="../css/index.css" rel="stylesheet" />
 
 
-	<!-- Script to Activate the Carousel -->
-	<script>
+<!-- Script to Activate the Carousel -->
+<script>
 	$('#mioCarousel').carousel({
-			interval : 3000
-		//changes the speed
-		})
-	</script>
+		interval : 3000
+	//changes the speed
+	})
+</script>
 </head>
 
 <body>
@@ -24,42 +24,27 @@
 	<!-- inverte i colori della barra -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
-<<<<<<< HEAD
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Home</a>
-=======
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Home</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Chi siamo</a></li>
+					<li><a href="#">Dove Siamo</a></li>
+					<li><a href="#">Contatti</a></li>
+				</ul>
+				<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/login"><span
+							class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
+				</ul>
+
 			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Chi siamo</a></li>
-				<li><a href="#">Dove Siamo</a></li>
-				<li><a href="#">Contatti</a></li>
-			</ul>
-			<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
-			</ul>
->>>>>>> branch 'master' of https://github.com/Martolins/museo.git
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Chi siamo</a></li>
-			<li><a href="#">Dove Siamo</a></li>
-			<li><a href="#">Contatti</a></li>
-		</ul>
-		<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/login"><span
-					class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
-		</ul>
-	</div>
 	</nav>
 
-	
-		<!--  div che funga da contenitore di tutti gli elementi del carousel e che deve avere le classi carousel e slide. -->
-		<div id="mioCarousel" class="carousel slide">
 
-<<<<<<< HEAD
+	<!--  div che funga da contenitore di tutti gli elementi del carousel e che deve avere le classi carousel e slide. -->
+	<div id="mioCarousel" class="carousel slide">
+
 		<!-- Una lista di elementi vuoti che costituiranno gli indicatori 
 		che segnalano all'utente quanti sono gli elementi del carosuel e qual'è quello attualmente visualizzato. -->
 		<ol class="carousel-indicators">
@@ -67,10 +52,6 @@
 			<li data-target="#mioCarousel" data-slide-to="1"></li>
 			<li data-target="#mioCarousel" data-slide-to="2"></li>
 		</ol>
-=======
-		<div class="carousel-inner">
-
-
 			<!-- Una lista di elementi vuoti che costituiranno gli indicatori 
 		che segnalano all'utente quanti sono gli elementi del carosuel e qual e' quello attualmente visualizzato. -->
 			<ol class="carousel-indicators">
@@ -78,44 +59,43 @@
 				<li data-target="#mioCarousel" data-slide-to="1"></li>
 				<li data-target="#mioCarousel" data-slide-to="2"></li>
 			</ol>
->>>>>>> branch 'master' of https://github.com/Martolins/museo.git
 
 
-<div class="carousel-inner">
-			<div class="item active">
-				<!-- Set the first background image using inline CSS below. -->
-				<img src="../img/1.png" width="100%" />
+			<div class="carousel-inner">
+				<div class="item active">
+					<!-- Set the first background image using inline CSS below. -->
+					<img src="../img/1.png" width="100%" />
+				</div>
+
+				<div class="item">
+					<!-- Set the second background image using inline CSS below. -->
+					<img src="../img/2.png" width="100%" />
+				</div>
+
+				<div class="item">
+					<!-- Set the third background image using inline CSS below. -->
+					<img src="../img/3.png" width="100%" />
+				</div>
+
 			</div>
 
-			<div class="item">
-				<!-- Set the second background image using inline CSS below. -->
-				<img src="../img/2.png" width="100%" />
-			</div>
 
-			<div class="item">
-				<!-- Set the third background image using inline CSS below. -->
-				<img src="../img/3.png" width="100%" />
-			</div>
-
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#mioCarousel"
+				data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#mioCarousel"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right"></span> <span
+				class="sr-only">Next</span>
+			</a>
 		</div>
 
 
-		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#mioCarousel" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span> <span
-			class="sr-only">Previous</span>
-		</a> <a class="right carousel-control" href="#mioCarousel"
-			data-slide="next"> <span
-			class="glyphicon glyphicon-chevron-right"></span> <span
-			class="sr-only">Next</span>
-		</a>
-	</div>
-
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
