@@ -21,7 +21,7 @@
    	<div>
     	<p th:text="'Autore: ' + ${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}" />	
     </div>
-    <form action="#" th:action="@{/login}" method="get">
+    <form action="#" th:action="@{${action}}" method="get">
    	<button type="submit" class="btn btn-default">Ok</button>
 	</form>
 </body>

@@ -51,15 +51,14 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/autore"> Inserisci un nuovo autore </a>
+				<a href="/inserisciAutore"> Inserisci un nuovo autore </a>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/inserisciQuadro"> Inserisci un nuovo quadro </a> <span
-					th:if="${nessunAutoreInserisciQuadro}"
-					style="margin-left: 5px; display: inline-block; color: red;"
+				<a href="/inserisciQuadro"> Inserisci un nuovo quadro </a> <span th:if="${nessunAutoreInserisciQuadro}"
+					style="margin-left: 10px; display: inline-block; color: red;"
 					id="nessunAutoreInserisciQuadro"
 					th:text="#{label.nessunAutoreInserisciQuadro}"></span>
 			</div>

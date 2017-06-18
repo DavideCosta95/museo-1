@@ -14,7 +14,6 @@ import it.uniroma3.progetto.model.Quadro;
 
 import it.uniroma3.progetto.service.QuadroService;
 
-// controller to access the login page
 @Controller
 public class MainController {
 
@@ -44,28 +43,26 @@ public class MainController {
 		return "pannelloAmministratore";
 	}
 	
-
-	// Login form with error
 	@RequestMapping("/login-error.html")
 	public String loginError(Model model) {
 		model.addAttribute("loginError", true);
 		return "login";
 	}
 
-	//Lista di quadri
 	@GetMapping(value="/listaQuadri")
-	public String showForm(Model model){
+	public String mostraQuadri(Model model){
 		List<Quadro> quadri = (List<Quadro>) quadroService.findAll(); 
 		model.addAttribute("quadri",quadri);
 		return "listaQuadri";
 	}
-
+	
 	@GetMapping(value = "/dettagli")
 	public String dettagliQuadro(@ModelAttribute("id") Long id, Model model){
-		Quadro quadro = quadroService.findbyId(id);
-		model.addAttribute(quadro);
-		return "dettagliQuadro";
+		Quadro quadro = quadroService.findById(id);
+		model.addAttribute("quadro", quadro);
+		model.addAttribute("testo", "Dettagli di:");
+		model.addAttribute("titolo", quadro.getTitolo());
+		model.addAttribute("action", "/");
+		return "confermaOperazioneQuadro";
 	}
-	
-
 }
