@@ -76,7 +76,7 @@ public class MainController {
 			model.addAttribute("testo", "I nostri autori");
 			model.addAttribute("titolo", "Lista autori");
 			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
-			model.addAttribute("quadri",autori);
+			model.addAttribute("autori",autori);
 		}
 		return "lista";
 	}
@@ -87,7 +87,17 @@ public class MainController {
 		model.addAttribute("quadro", quadro);
 		model.addAttribute("testo", "Dettagli di:");
 		model.addAttribute("titolo", quadro.getTitolo());
-		model.addAttribute("action", "/listaQuadri");
-		return "confermaOperazioneQuadro";
+		model.addAttribute("action", "/");
+		return "informazioniQuadro";
+	}
+	
+	@GetMapping(value = "/dettagliAutore")
+	public String dettagliAutore(@ModelAttribute("id") Long id, Model model){
+		Autore autore = autoreService.findById(id);
+		model.addAttribute("autore", autore);
+		model.addAttribute("testo", "Dettagli di:");
+		model.addAttribute("titolo", autore.getNome() + " " + autore.getCognome());
+		model.addAttribute("action", "/");
+		return "informazioniAutore";
 	}
 }

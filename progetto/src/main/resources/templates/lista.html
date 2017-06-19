@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Lista quadri</title>
+<title th:text="${titolo}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -33,11 +33,11 @@
 
 
 		<div class="page-header">
-			<h1>La nostra collezione</h1>
+			<h1 th:text="${testo}"></h1>
 		</div>
 		<ul>
-			<li th:each="quadro : ${quadri}"><a th:href="@{/dettagliQuadro(id=${quadro.id})}" th:text="${quadro.titolo}"></a>
-			</li>
+			<li th:if="${tipo.equals('quadro')}" th:each="quadro : ${quadri}"><a th:href="@{/dettagliQuadro(id=${quadro.id})}" th:text="${quadro.titolo}"></a></li>
+			<li th:if="${tipo.equals('autore')}" th:each="autore : ${autori}"><a th:href="@{/dettagliAutore(id=${autore.id})}" th:text="${autore.nome} + ' ' + ${autore.nome}"></a></li>
 		</ul>
 	</div>
 </body>
