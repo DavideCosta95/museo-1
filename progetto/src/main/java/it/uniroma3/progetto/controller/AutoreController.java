@@ -50,6 +50,8 @@ public class AutoreController {
 				model.addAttribute("testoBottone", "Inserisci");
 				model.addAttribute("titolo", "Autore inserito");
 				model.addAttribute("testo", "Hai inserito l'autore:");
+				model.addAttribute("action",  "/pannelloAmministratore");
+				model.addAttribute("autorizzato",  "autorizzato");
 				return "confermaOperazioneAutore";
 			}catch(Exception e) {
 				model.addAttribute("action", "/inserisciAutore");
@@ -114,6 +116,8 @@ public class AutoreController {
 				autoreService.add(autore);
 				model.addAttribute("titolo", "Autore modificato");
 				model.addAttribute("testo", "Nuovi dati dell'autore:");
+				model.addAttribute("action",  "/pannelloAmministratore");
+				model.addAttribute("autorizzato",  "autorizzato");
 				return "confermaOperazioneAutore";
 			}catch(Exception e){
 				model.addAttribute("autore",autore);
@@ -144,6 +148,8 @@ public class AutoreController {
 		model.addAttribute("autore", autore);
 		model.addAttribute("titolo", "Autore eliminato");
 		model.addAttribute("testo", "Hai eliminato l'autore:");
+		model.addAttribute("action",  "/pannelloAmministratore");
+		model.addAttribute("autorizzato",  "autorizzato");
 		return "confermaOperazioneAutore";
 	}
 	

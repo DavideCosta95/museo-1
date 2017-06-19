@@ -36,8 +36,7 @@
 			<h1>La nostra collezione</h1>
 		</div>
 		<ul>
-			<li th:each="quadro : ${quadri}"><a
-				th:href="@{/dettagli(id=${quadro.id})}" th:text="${quadro.titolo}"></a>
+			<li th:each="quadro : ${quadri}"><a th:href="@{/dettagliQuadro(id=${quadro.id})}" th:text="${quadro.titolo}"></a>
 			</li>
 		</ul>
 	</div>

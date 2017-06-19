@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
-		.withUser("admin").password("password").roles("ADMIN");
+		.withUser("a").password("a").roles("ADMIN");
 
 		auth.jdbcAuthentication().dataSource(dataSource);
 
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 		.authorizeRequests()
-		.antMatchers("/","/listaQuadri").permitAll()
+	//	.antMatchers("/","/listaQuadri").permitAll()
 			.antMatchers("/login").access("hasAuthority('ADMIN')")
 	//		.anyRequest().authenticated()
 		.and()

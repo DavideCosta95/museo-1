@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.progetto.model.Quadro;
 
@@ -27,7 +29,6 @@ public class MainController {
 	
 	@RequestMapping("/completaLogin")
 	public String completaLogin(){
-		
 		return "pannelloAmministratore";
 	}
 	
@@ -46,6 +47,19 @@ public class MainController {
 		model.addAttribute("loginError", true);
 		return "login";
 	}
+	
+	@GetMapping("/pannelloAmministratore")
+	public String mostraHome(){
+		return "index";
+	}
+	
+	@PostMapping("/pannelloAmministratore")
+	public String apriPannelloAmministratore(Model model, @RequestParam(value = "autorizzato", required=false) String autorizzato){
+		if(autorizzato!=null && autorizzato.equals("autorizzato"))
+			return "pannelloAmministratore";
+		else
+			return "index";
+	}
 
 	@GetMapping(value="/listaQuadri")
 	public String mostraQuadri(Model model){
@@ -54,13 +68,13 @@ public class MainController {
 		return "listaQuadri";
 	}
 	
-	@GetMapping(value = "/dettagli")
+	@GetMapping(value = "/dettagliQuadro")
 	public String dettagliQuadro(@ModelAttribute("id") Long id, Model model){
 		Quadro quadro = quadroService.findById(id);
 		model.addAttribute("quadro", quadro);
 		model.addAttribute("testo", "Dettagli di:");
 		model.addAttribute("titolo", quadro.getTitolo());
-		model.addAttribute("action", "/");
+		model.addAttribute("action", "/listaQuadri");
 		return "confermaOperazioneQuadro";
 	}
 }

@@ -68,10 +68,11 @@ public class QuadroController  {
 				quadroService.add(quadro);
 				model.addAttribute("testo", "Quadro inserito:");
 				model.addAttribute("titolo", "Quadro inserito");
-				model.addAttribute("action", "/login");
+				model.addAttribute("action", "/pannelloAmministratore");
+				model.addAttribute("autorizzato",  "autorizzato");
 				return "confermaOperazioneQuadro";
 			}catch(Exception e){
-				List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+				List<Autore> autori = (List<Autore>) autoreService.findAll();
 				model.addAttribute("autori",autori);
 				model.addAttribute("quadro", quadro);
 				model.addAttribute("autore", autoreID);
@@ -161,7 +162,8 @@ public class QuadroController  {
 				quadroService.add(quadro);
 				model.addAttribute("testo", "Nuovi dati del quadro:");
 				model.addAttribute("titolo", "Quadro modificato:");
-				model.addAttribute("action", "/login");
+				model.addAttribute("action", "/pannelloAmministratore");
+				model.addAttribute("autorizzato",  "autorizzato");
 				return "confermaOperazioneQuadro";
 			}catch(Exception e){
 				model.addAttribute("action", "/confermaModificaQuadro");
@@ -204,7 +206,8 @@ public class QuadroController  {
 			model.addAttribute("quadro", quadroTrovato);
 			model.addAttribute("titolo", "Quadro eliminato");
 			model.addAttribute("testo", "Hai eliminato il quadro:");
-			model.addAttribute("action", "/login");
+			model.addAttribute("action", "/pannelloAmministratore");
+			model.addAttribute("autorizzato",  "autorizzato");
 			return "confermaOperazioneQuadro";
 		}
 		catch(Exception e){
