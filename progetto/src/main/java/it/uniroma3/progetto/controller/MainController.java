@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.uniroma3.progetto.model.Quadro;
@@ -25,20 +24,18 @@ public class MainController {
 	public String main() {
 		return "index";
 	}
-
-
-	// Login form
-	@PostMapping("/loginAmm")
-	public String pannelloAmministratore() {
+	
+	@RequestMapping("/completaLogin")
+	public String completaLogin(){
 		return "pannelloAmministratore";
 	}
 	
-	@GetMapping("/loginAmm")
+	@RequestMapping("/loginAmm")
 	public String error() {
 		return "login";
 	}
 	
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login() {
 		return "pannelloAmministratore";
 	}
