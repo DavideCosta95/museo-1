@@ -35,10 +35,10 @@
 					<li><a href="#">Dove Siamo</a></li>
 					<li><a href="#">Contatti</a></li>
 				</ul>
-				<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
+				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista quadri</a>
+				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=autore)}">Lista autori</a>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/login"><span
-							class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
+					<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
 				</ul>
 
 			</div>
@@ -49,7 +49,7 @@
 	<div id="mioCarousel" class="carousel slide">
 
 		<!-- Una lista di elementi vuoti che costituiranno gli indicatori 
-		che segnalano all'utente quanti sono gli elementi del carosuel e qual'è quello attualmente visualizzato. -->
+		che segnalano all'utente quanti sono gli elementi del carosuel e qual'ï¿½ quello attualmente visualizzato. -->
 		<ol class="carousel-indicators">
 			<li data-target="#mioCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#mioCarousel" data-slide-to="1"></li>

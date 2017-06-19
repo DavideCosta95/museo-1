@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.progetto.model.Autore;
 import it.uniroma3.progetto.model.Quadro;
-
+import it.uniroma3.progetto.service.AutoreService;
 import it.uniroma3.progetto.service.QuadroService;
 
 @Controller
@@ -20,6 +21,8 @@ public class MainController {
 
 	@Autowired
 	private QuadroService quadroService;
+	@Autowired
+	private AutoreService autoreService;
 	
 	
 	@RequestMapping("/")
@@ -34,7 +37,7 @@ public class MainController {
 	
 	@RequestMapping("/loginAmm")
 	public String error() {
-		return "login";
+		return "formLogin";
 	}
 	
 	@GetMapping("/login")
@@ -45,7 +48,7 @@ public class MainController {
 	@RequestMapping("/login-error.html")
 	public String loginError(Model model) {
 		model.addAttribute("loginError", true);
-		return "login";
+		return "formLogin";
 	}
 	
 	@GetMapping("/pannelloAmministratore")
@@ -61,11 +64,21 @@ public class MainController {
 			return "index";
 	}
 
-	@GetMapping(value="/listaQuadri")
-	public String mostraQuadri(Model model){
-		List<Quadro> quadri = (List<Quadro>) quadroService.findAll(); 
-		model.addAttribute("quadri",quadri);
-		return "listaQuadri";
+	@GetMapping(value="/lista")
+	public String mostraQuadri(@ModelAttribute("tipo") String tipoLista, Model model) {
+		if(tipoLista.equals("quadro")) {
+			model.addAttribute("testo", "La nostra collezione");
+			model.addAttribute("titolo", "Lista quadri");
+			List<Quadro> quadri = (List<Quadro>) quadroService.findAll(); 
+			model.addAttribute("quadri",quadri);
+		}
+		if(tipoLista.equals("autore")) {
+			model.addAttribute("testo", "I nostri autori");
+			model.addAttribute("titolo", "Lista autori");
+			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+			model.addAttribute("quadri",autori);
+		}
+		return "lista";
 	}
 	
 	@GetMapping(value = "/dettagliQuadro")

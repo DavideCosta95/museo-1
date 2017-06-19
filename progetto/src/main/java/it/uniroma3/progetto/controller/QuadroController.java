@@ -70,7 +70,7 @@ public class QuadroController  {
 				model.addAttribute("titolo", "Quadro inserito");
 				model.addAttribute("action", "/pannelloAmministratore");
 				model.addAttribute("autorizzato",  "autorizzato");
-				return "confermaOperazioneQuadro";
+				return "informazioniQuadro";
 			}catch(Exception e){
 				List<Autore> autori = (List<Autore>) autoreService.findAll();
 				model.addAttribute("autori",autori);
@@ -164,7 +164,7 @@ public class QuadroController  {
 				model.addAttribute("titolo", "Quadro modificato:");
 				model.addAttribute("action", "/pannelloAmministratore");
 				model.addAttribute("autorizzato",  "autorizzato");
-				return "confermaOperazioneQuadro";
+				return "informazioniQuadro";
 			}catch(Exception e){
 				model.addAttribute("action", "/confermaModificaQuadro");
 				model.addAttribute("testo", "Modifica quadro:");
@@ -208,7 +208,7 @@ public class QuadroController  {
 			model.addAttribute("testo", "Hai eliminato il quadro:");
 			model.addAttribute("action", "/pannelloAmministratore");
 			model.addAttribute("autorizzato",  "autorizzato");
-			return "confermaOperazioneQuadro";
+			return "informazioniQuadro";
 		}
 		catch(Exception e){
 			List<Autore> autori= (List<Autore>) autoreService.findAll();
