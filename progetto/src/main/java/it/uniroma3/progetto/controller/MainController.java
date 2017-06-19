@@ -63,7 +63,7 @@ public class MainController {
 			return "pannelloAmministratore";
 	}
 
-	@GetMapping(value="/lista")
+	@RequestMapping(value="/lista")
 	public String mostraQuadri(@ModelAttribute("tipo") String tipoLista, Model model) {
 		if(tipoLista.equals("quadro")) {
 			model.addAttribute("testo", "La nostra collezione");

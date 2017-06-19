@@ -69,7 +69,6 @@ public class QuadroController  {
 				model.addAttribute("testo", "Quadro inserito:");
 				model.addAttribute("titolo", "Quadro inserito");
 				model.addAttribute("action", "/pannelloAmministratore");
-				model.addAttribute("autorizzato",  "autorizzato");
 				return "informazioniQuadro";
 			}catch(Exception e){
 				List<Autore> autori = (List<Autore>) autoreService.findAll();
@@ -163,7 +162,6 @@ public class QuadroController  {
 				model.addAttribute("testo", "Nuovi dati del quadro:");
 				model.addAttribute("titolo", "Quadro modificato:");
 				model.addAttribute("action", "/pannelloAmministratore");
-				model.addAttribute("autorizzato",  "autorizzato");
 				return "informazioniQuadro";
 			}catch(Exception e){
 				model.addAttribute("action", "/confermaModificaQuadro");
@@ -207,7 +205,6 @@ public class QuadroController  {
 			model.addAttribute("titolo", "Quadro eliminato");
 			model.addAttribute("testo", "Hai eliminato il quadro:");
 			model.addAttribute("action", "/pannelloAmministratore");
-			model.addAttribute("autorizzato",  "autorizzato");
 			return "informazioniQuadro";
 		}
 		catch(Exception e){
@@ -220,6 +217,18 @@ public class QuadroController  {
 			return "selezionaQuadro";
 		}
 	}	
+	
+	@GetMapping("/mostraAutoreQuadro")
+	public String mostraAutoreQuadro(@RequestParam(value = "autore", required = true) Long autoreSelezionatoID,
+			@RequestParam(value = "idQuadro") Long idQuadro, Model model){
+		Autore autoreSelezionato = autoreService.findById(autoreSelezionatoID);
+		Quadro quadro = quadroService.findById(idQuadro);
+		model.addAttribute("autore", autoreSelezionato);
+		model.addAttribute("titolo", autoreSelezionato.getNome() + " " + autoreSelezionato.getCognome());
+		model.addAttribute("testo", "Autore di: " + quadro.getTitolo());
+		model.addAttribute("action",  "/");
+		return "informazioniAutore";
+	}
 }
 
 

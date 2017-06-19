@@ -42,10 +42,13 @@
     	<p th:text="'Dimensioni: ' + ${quadro.dimensioni}" />	
       </div>
    	<div>
-    	<p th:text="'Autore: ' + ${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}" />	
+    	<p>
+    	Autore: <a th:text="${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}" th:href="@{/mostraAutoreQuadro(autore=${quadro.autore.id},idQuadro=${quadro.id})}"></a>
+    	</p>
     </div>
         <div> 
     	<form class="form-horizontal"  action="#" th:action="@{${action}}" method="get">
+    			<input type="hidden" value="${quadro.id}" th:name="idQuadro" />
 				<button type="submit" class="btn btn-info active" style="background-color:#5079B4;">Ok</button>
 		</form>
 		</div>
