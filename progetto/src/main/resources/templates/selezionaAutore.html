@@ -12,11 +12,18 @@
 	<!-- inverte i colori della barra -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Home</a>
+				</div>
 				<ul class="nav navbar-nav">
-					<li class="navbar-header"><a href="/pannelloAmministratore">Pannello amministratore</a></li>
+					<li class="navbar-header"><a href="#">Chi siamo</a></li>
+					<li><a href="#">Dove Siamo</a></li>
+					<li><a href="#">Contatti</a></li>
 				</ul>
+				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista quadri</a>
+				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=autore)}">Lista autori</a>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+					<li><a th:href="@{/pannelloAmministratore}"><span class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
 				</ul>
 
 			</div>
