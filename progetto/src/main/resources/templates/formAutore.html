@@ -40,7 +40,7 @@
 				<label class="control-label col-sm-2" for="#{label.nome}">Nome:</label>
 				<div class="col-sm-10">
 					<input type="text" th:field="*{nome}" />
-					<span th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}" style="color: #5079B4; font-weight: bold">Error</span>
+					<span th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}" style="color:black">Error</span>
 				</div>
 
 			</div>
@@ -55,7 +55,7 @@
 					<input type="text" th:field="*{cognome}" /> <span
 						th:if="${#fields.hasErrors('cognome')}"
 						th:text="#{label.mandatory}"
-						style="color: #5079B4; font-weight: bold">Error</span>
+						style="color:black">Error</span>
 				</div>
 
 			</div>
@@ -66,7 +66,7 @@
 				<div class="col-sm-10">
 					<input type="text" th:field="*{dataNascita}" /> <span
 						th:if="${#fields.hasErrors('dataNascita')}"
-						th:text="#{label.data}" style="color: #5079B4; font-weight: bold">Error</span>
+						th:text="#{label.data}" style="color:black">Error</span>
 				</div>
 			</div>
 
@@ -76,7 +76,7 @@
 				<div class="col-sm-10">
 					<input type="text" th:field="*{dataMorte}" /> <span
 						th:if="${#fields.hasErrors('dataMorte')}" th:text="#{label.data}"
-						style="color: #5079B4; font-weight: bold">Error</span>
+						style="color:black">Error</span>
 				</div>
 			</div>
 
@@ -87,7 +87,7 @@
 					<input type="text" th:field="*{nazionalita}" /> <span
 						th:if="${#fields.hasErrors('nazionalita')}"
 						th:text="#{label.mandatory}"
-						style="color: #5079B4; font-weight: bold">Error</span>
+						style="color:black">Error</span>
 				</div>
 			</div>
 			<input type="hidden" value="${autore.id}" th:field="*{id}" />

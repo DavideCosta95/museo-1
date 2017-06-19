@@ -8,7 +8,7 @@
 
 <link href="../css/form.css" rel="stylesheet" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript">
+ <script type="text/javascript">
 	$(document).ready(function () {
 	      $('#immagineQuadro').fadeToggle();
 	    });
@@ -19,7 +19,7 @@
 #immagineQuadro{
 		display:none;
 	}
-</style>
+</style> 
 </head>
 <body>
 	<!-- inverte i colori della barra -->
@@ -55,7 +55,7 @@
 					<input type="text" th:field="*{titolo}" /> <span
 						th:if="${#fields.hasErrors('titolo')}"
 						th:text="#{label.mandatory}"
-						style="color: #5079B4; font-weight: bold"> Error</span>
+						style="color:black;"> Error</span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -63,7 +63,7 @@
 				<div class="col-sm-10">
 					<input type="text" th:field="*{anno}" /> <span
 						th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}"
-						style="color: #5079B4; font-weight: bold"> Error</span>
+						style="color:black"> Error</span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -72,7 +72,7 @@
 					<input type="text" th:field="*{tecnica}" /> <span
 						th:if="${#fields.hasErrors('tecnica')}"
 						th:text="#{label.mandatory}"
-						style="color: #5079B4; font-weight: bold">Error</span>
+						style="color:black">Error</span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -82,7 +82,7 @@
 					<input type="text" th:field="*{dimensioni}" /> <span
 						th:if="${#fields.hasErrors('dimensioni')}"
 						th:text="#{label.mandatory}"
-						style="color: #5079B4; font-weight: bold">Error</span>
+						style="color:black">Error</span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -94,23 +94,20 @@
 					<option th:each="autore: ${autori}" th:value="${autore.id}"
 						th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 				</select>
-			</div>
-		
-		
-			<div id ="immagineQuadro" style = "margin-top:10px">Immagine Quadro: (SOLO FORMATO .JPG) <input type = "file" name ="immagineQuadro" accept=".jpg"/></div>
+				</div>
 			
+		
+		
+			 <div id ="immagineQuadro" style = "margin-top:10px">Immagine Quadro: (SOLO FORMATO .JPG) <input type = "file" name ="immagineQuadro" accept=".jpg"/></div>
+		
 
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-info active"
 					style="background-color: #5079B4;" th:text="${testoBottone}"></button>
 			</div>
 
-			<input type="hidden" value="${quadro.autore.id}" th:field="*{id}"
-				name="id" /> <input type="file" id="myFile"/>
 
-
-		</form>
-	</div>
-
+</form>
+</div>
 </body>
 </html>
