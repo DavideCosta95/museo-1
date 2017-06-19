@@ -2,10 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <title th:text="${titolo}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link href="../css/form.css" rel="stylesheet" />
 <body>
-    <div>
-    	<p th:text="${testo}" />
-    </div>
+	<!-- inverte i colori della barra -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Home</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Chi siamo</a></li>
+				<li><a href="#">Dove Siamo</a></li>
+				<li><a href="#">Contatti</a></li>
+			</ul>
+			<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"> <span class="glyphicon glyphicon-user"><font face="verdana">User</font></span>
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="page-header">
+			<h1 th:text="${testo}"></h1>
+		</div>
 	<div>
     	<p th:text="'Titolo: ' + ${quadro.titolo}" />
     </div>
@@ -21,8 +43,15 @@
    	<div>
     	<p th:text="'Autore: ' + ${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}" />	
     </div>
-    <form action="#" th:action="@{${action}}" method="get">
+        <div> 
+    	<form class="form-horizontal"  action="#" th:action="@{${action}}" method="get">
+				<button type="submit" class="btn btn-info active" style="background-color:#5079B4;">Ok</button>
+		</form>
+		</div>
+	</div>
+   <!--  <form action="#" th:action="@{${action}}" method="get">
    	<button type="submit" class="btn btn-default">Ok</button>
 	</form>
+	</div> -->
 </body>
 </html>
