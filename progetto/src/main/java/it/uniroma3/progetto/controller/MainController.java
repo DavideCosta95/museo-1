@@ -27,6 +27,7 @@ public class MainController {
 	
 	@RequestMapping("/completaLogin")
 	public String completaLogin(){
+		
 		return "pannelloAmministratore";
 	}
 	
