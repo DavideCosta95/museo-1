@@ -27,7 +27,7 @@ public class Autore {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@NotEmpty
+	@NotEmpty 
 	@NotNull
 	private String nome;
 	
