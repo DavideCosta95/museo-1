@@ -8,27 +8,32 @@
 
 <link href="../css/form.css" rel="stylesheet" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	      $('#immagineQuadro').fadeToggle();
+	    });
+	});
+</script>
+<style type="text/css">
+	#autoUpdate{
+#immagineQuadro{
+		display:none;
+	}
+</style>
 </head>
 <body>
 
 	<!-- inverte i colori della barra -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Home</a>
+				<ul class="nav navbar-nav">
+					<li class="navbar-header"><a href="/pannelloAmministratore">Pannello amministratore</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/login"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+				</ul>
+
 			</div>
-			<ul class="nav navbar-nav">
-				<li class="navbar-header"><a href="#">Chi siamo</a></li>
-				<li><a href="#">Dove Siamo</a></li>
-				<li><a href="#">Contatti</a></li>
-			</ul>
-			<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"> <span class="glyphicon glyphicon-user"><font
-							face="verdana">User</font></span>
-				</a></li>
-			</ul>
-		</div>
 	</nav>
 	<div class="container">
 		<div class="page-header">
@@ -84,16 +89,10 @@
 						th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 				</select>
 			</div>
+		
+		
+			<div id ="immagineQuadro" style = "margin-top:10px">Immagine Quadro: (SOLO FORMATO .JPG) <input type = "file" name ="immagineQuadro" accept=".jpg"/></div>
 			
-			
-			<!-- <button onclick="myFunction()">Try it</button>-->
-
-			<script>
-				function myFunction() {
-					var x = document.getElementById("myFile");
-					x.disabled = true;
-				}
-			</script>
 
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-info active"
