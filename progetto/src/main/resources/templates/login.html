@@ -6,38 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="../css/form.css" rel="stylesheet" />
 
 
 <style>
 .jumbotron {
-	background-color: grey;
+	background-color:#F05F40 ;
 }
 </style>
 </head>
 
 <body>
 
-	<!--  nav-inverse inverte i colori della barra -->
-	<nav class="navbar navbar-inverse" role="navigation">
-
-		<!-- Logo e pulsante per barra ridimensionata -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Espandi barra di navigazione</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<!--  <a class="navbar-brand" href="index.html">Logo</a> -->
-		</div>
-
-		<!-- Elementi della barra -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="#">Link 1</a></li>
-				<li><a href="#">Link 2</a></li>
-				<li><a href="#">Login</a></li>
+	<!-- inverte i colori della barra -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Home</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="navbar-header"><a href="#">Chi siamo</a></li>
+				<li><a href="#">Dove Siamo</a></li>
+				<li><a href="#">Contatti</a></li>
 			</ul>
+			<a class="btn btn-lg bt-primary" href="/listaQuadri"> Visita</a>
 		</div>
 	</nav>
 	<!-- container imposta un margine a destra ed uno a sinistra ed imposta la sua larghezza 
@@ -45,7 +39,7 @@ in base alla dimensione del dispositivo su cui la pagina � visualizzata. -->
 	<div class="container">
 
 		<div class="page-header">
-			<h1>Benvenuto nella Galleria!</h1>
+			<h1>Login Amministratore</h1>
 		</div>
 
 		<div class="jumbotron">
@@ -59,6 +53,17 @@ in base alla dimensione del dispositivo su cui la pagina � visualizzata. -->
 					<label for="username">Username</label> <input type="text"
 						id="username" name="username" /> <label for="password">Password</label>
 					<input type="password" id="password" name="password" />
+					  <div> 
+    	<div class="form-actions">
+				<button type="submit" class="btn btn-info active" style="background-color:#5079B4;">
+				Log in</button>
+		</div>
+		</div>
+			</fieldset>
+			</form>
+			</div>
+	
+		<!-- 
 					<div class="form-actions">
 						<button type="submit" class="btn btn-success btn-xs">Log
 							in</button>
@@ -66,6 +71,7 @@ in base alla dimensione del dispositivo su cui la pagina � visualizzata. -->
 				</fieldset>
 			</form>
 		</div>
+		-->
 
 	</div>
 
