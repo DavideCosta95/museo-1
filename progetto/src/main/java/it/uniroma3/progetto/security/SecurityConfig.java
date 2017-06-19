@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
-import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -28,14 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .and()
 	        .configure(auth);
 		 auth.jdbcAuthentication().dataSource(dataSource);
-//		.withUser("user").password("user").roles("ADMIN");
-//		auth.jdbcAuthentication().dataSource(dataSource);
-		System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-
-		//		
-		//		.passwordEncoder(new BCryptPasswordEncoder())
-		//		.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
-		//		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
 	}
 
 	private InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>
@@ -59,16 +50,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.logout()
 		.logoutSuccessUrl("/?logout")
 			.permitAll();
-//	        .rememberMe()
-//	        	.key("$2a$04$dbc42eVSPP.GzzwGVzjkP.AGUeZuiO/2tdGaFReM17WzmJ9o7DsMW")
-//	        	.rememberMeParameter("ricordami")
-//	        	.and()
-//	        .logout()
-//	        	.logoutSuccessUrl("/?logout")
-//	            .permitAll()
-//	            .and()
-//	        .sessionManagement()
-//	        	.maximumSessions(1)
-//	        	.expiredUrl("/login?expired");
     }
 }

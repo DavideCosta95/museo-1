@@ -60,7 +60,6 @@ public class MainController {
 	
 	@RequestMapping("/pannelloAmministratore")
 	public String apriPannelloAmministratore(Model model){
-		System.out.println("AAAAAAA");
 			return "pannelloAmministratore";
 	}
 
