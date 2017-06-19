@@ -43,7 +43,7 @@ in base alla dimensione del dispositivo su cui la pagina � visualizzata. -->
 		</div>
 
 		<div class="jumbotron">
-			<form name="f" th:action="@{/completaLogin}" method="post">
+			<form name="f" th:action="@{/login}" method="post">
 				<fieldset>
 					<legend>Please Login</legend>
 					<div th:if="${param.error}" class="alert alert-error">Invalid
@@ -51,12 +51,12 @@ in base alla dimensione del dispositivo su cui la pagina � visualizzata. -->
 					<div th:if="${param.logout}" class="alert alert-success">You
 						have been logged out.</div>
 					<div class="form-group">
-						<label for="username">Username</label> <input type="text"
-							id="username" name="username" />
+						<label for="username">Username</label> 
+						<input type="text" id="username" name="username" />
 					</div>
 					<div class="form-group">
-						<label for="password">Password</label> <input type="password"
-							id="password" name="password" />
+						<label for="password">Password</label>
+						 <input type="password" id="password" name="password" />
 					</div>
 					<div>
 						<div class="form-actions">
