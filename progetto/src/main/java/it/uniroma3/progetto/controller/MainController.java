@@ -75,7 +75,7 @@ public class MainController {
 			return "pannelloAmministratore";
 	}
 
-	@RequestMapping(value="/lista")
+	@RequestMapping("/lista")
 	public String mostraQuadri(@ModelAttribute("tipo") String tipoLista, Model model) {
 		if(tipoLista.equals("quadro")) {
 			model.addAttribute("testo", "La nostra collezione");
@@ -92,5 +92,18 @@ public class MainController {
 			model.addAttribute("autori",autori);
 		}
 		return "lista";
+	}
+	
+	@RequestMapping("/chiSiamo")
+	public String mostraChiSiamo(Model model){
+		return "chiSiamo";
+	}
+	@RequestMapping("/doveSiamo")
+	public String mostraDoveSiamo(Model model){
+		return "doveSiamo";
+	}
+	@RequestMapping("/contatti")
+	public String mostraContatti(Model model){
+		return "contatti";
 	}
 }
