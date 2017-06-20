@@ -3,10 +3,9 @@
 	xmlns:tiles="http://www.thymeleaf.org">
 <head>
 <title>Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="../css/form.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/form.css"/>
 
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -28,7 +27,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Home</a>
+				<a class="navbar-brand" th:href="@{/}">Home</a>
 				</div>
 				<ul class="nav navbar-nav">
 					<li class="navbar-header"><a href="#">Chi siamo</a></li>
@@ -38,68 +37,52 @@
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista quadri</a>
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=autore)}">Lista autori</a>
 				<ul class="nav navbar-nav navbar-right">
-						<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+						<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
 				</ul>
-
 			</div>
 	</nav>
 	<div class="container">
-
 		<div class="page-header">
 			<h1>Operazioni amministratore</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/inserisciAutore"> Inserisci un nuovo autore </a>
+				<a href="/inserisciAutore">Inserisci un nuovo autore</a>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/inserisciQuadro"> Inserisci un nuovo quadro </a> <span th:if="${nessunAutoreInserisciQuadro}"
-					style="margin-left: 10px; display: inline-block; color: black;"
-					id="nessunAutoreInserisciQuadro"
-					th:text="#{label.nessunAutoreInserisciQuadro}"></span>
+				<a href="/inserisciQuadro">Inserisci un nuovo quadro</a>
+				<span th:if="${nessunAutoreInserisciQuadro}" style="margin-left: 10px; display: inline-block; color: black;" id="nessunAutoreInserisciQuadro" th:text="#{label.nessunAutoreInserisciQuadro}"></span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/selezionaAutore"> Modifica un autore </a> <span
-					th:if="${nessunAutoreModificaAutore}"
-					style="margin-left: 5px; display: inline-block; color: black;"
-					id="nessunAutoreModificaAutore"
-					th:text="#{label.nessunAutoreModificaAutore}"></span>
+				<a href="/selezionaAutore">Modifica un autore</a>
+				<span th:if="${nessunAutoreModificaAutore}" style="margin-left: 5px; display: inline-block; color: black;" id="nessunAutoreModificaAutore" th:text="#{label.nessunAutoreModificaAutore}"></span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/modificaQuadro"> Modifica un quadro </a> <span
-					th:if="${nessunQuadroModificaQuadro}"
-					style="margin-left: 5px; display: inline-block; color: black;"
-					id="nessunQuadroModificaQuadro"
-					th:text="#{label.nessunQuadroModificaQuadro}"></span>
+				<a href="/modificaQuadro"> Modifica un quadro </a>
+				<span th:if="${nessunQuadroModificaQuadro}" style="margin-left: 5px; display: inline-block; color: black;" id="nessunQuadroModificaQuadro" th:text="#{label.nessunQuadroModificaQuadro}"></span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/eliminaAutore"> Elimina un autore </a> <span
-					th:if="${nessunAutoreEliminaAutore}"
-					style="margin-left: 5px; display: inline-block; color: black;"
-					id="nessunAutoreEliminaAutore"
-					th:text="#{label.nessunAutoreEliminaAutore}"></span>
+				<a href="/eliminaAutore">Elimina un autore</a>
+				<span th:if="${nessunAutoreEliminaAutore}" style="margin-left: 5px; display: inline-block; color: black;" id="nessunAutoreEliminaAutore" th:text="#{label.nessunAutoreEliminaAutore}"></span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="/eliminaQuadro"> Elimina un quadro </a> <span
-					th:if="${nessunQuadroEliminaQuadro}"
-					style="margin-left: 5px; display: inline-block; color:black;"
-					id="nessunQuadroEliminaQuadro"
-					th:text="#{label.nessunQuadroEliminaQuadro}"></span>
+				<a href="/eliminaQuadro">Elimina un quadro</a>
+				<span th:if="${nessunQuadroEliminaQuadro}" style="margin-left: 5px; display: inline-block; color:black;" id="nessunQuadroEliminaQuadro" th:text="#{label.nessunQuadroEliminaQuadro}"></span>
 			</div>
 		</div>
 	</div>

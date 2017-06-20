@@ -2,18 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title th:text="${titolo}"></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-<link href="../css/form.css" rel="stylesheet" />
+<link href="../css/form.css" rel="stylesheet"/>
 </head>
 <body>
 	<!-- inverte i colori della barra -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Home</a>
+				<a class="navbar-brand" th:href="@{/}">Home</a>
 				</div>
 				<ul class="nav navbar-nav">
 					<li class="navbar-header"><a href="#">Chi siamo</a></li>
@@ -23,9 +22,8 @@
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista quadri</a>
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=autore)}">Lista autori</a>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{/pannelloAmministratore}"><span class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
+					<li><a th:href="@{/pannelloAmministratore}"><span class="glyphicon glyphicon-log-in"></span>Area Riservata</a></li>
 				</ul>
-
 			</div>
 	</nav>
 	<div class="container">
@@ -35,18 +33,18 @@
 
 	<form class="form-horizontal" action="#" th:action="@{${action}}" method="post">
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="#{label.autore}"> Autore: </label>
+			<label class="control-label col-sm-2" for="#{label.autore}" th:text="#{label.autore}">Autore:</label>
 			<select name="autoreSelezionato" id="autoUpdate" class="autoUpdate">
 				<option value="-1" th:disabled="true" th:selected="true">Seleziona un autore...</option>
-				<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}" />
+				<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}"/>
 			</select>
 		</div>
 		
 		<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-info active" style="background-color:#5079B4;" 
 				th:text="${testoBottone}"></button>
-			</div>
+		</div>
 	</form>
-	</div>
+</div>
 </body>
 </html>

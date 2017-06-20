@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${titolo}"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<link href="../css/form.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link href="../css/form.css" rel="stylesheet"/>
 </head>
     <body>
 <!-- inverte i colori della barra -->
@@ -15,16 +14,15 @@
 				<a class="navbar-brand" href="#">Home</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="navbar-header"><a href="#">Chi siamo</a></li>
+					<li class="navbar-header"><a th:href="@{/}">Chi siamo</a></li>
 					<li><a href="#">Dove Siamo</a></li>
 					<li><a href="#">Contatti</a></li>
 				</ul>
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista quadri</a>
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=autore)}">Lista autori</a>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{/pannelloAmministratore}"><span class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
+					<li><a th:href="@{/pannelloAmministratore}"><span class="glyphicon glyphicon-log-in"></span>Area Riservata</a></li>
 				</ul>
-
 			</div>
 	</nav>
 	
@@ -33,19 +31,19 @@
 			<h1 th:text="${testo}"></h1>
 		</div>
 	<div>
-    	<p th:text="'Nome: ' + ${autore.nome}" />
+    	<p th:text="'Nome: ' + ${autore.nome}"/>
     </div>
 	<div>
-    	<p th:text="'Cognome: ' + ${autore.cognome}" />
+    	<p th:text="'Cognome: ' + ${autore.cognome}"/>
     </div>
 	<div>
-    	<p th:text="'Nazionalit&agrave; : ' + ${autore.nazionalita}" />
+    	<p th:text="'Nazionalit&agrave; : ' + ${autore.nazionalita}"/>
     </div>
 	<div>
-    	<p th:text="'Data di nascita: ' + ${autore.dataNascita.date} + '/' + (${autore.dataNascita.month}+1) + '/' + (${autore.dataNascita.year}+1900)" />
+    	<p th:text="'Data di nascita: ' + ${autore.dataNascita.date} + '/' + (${autore.dataNascita.month}+1) + '/' + (${autore.dataNascita.year}+1900)"/>
     </div>
     	<div>
-    	  <p th:text="'Data di morte: ' + ${autore.dataMorte.date} + '/' + (${autore.dataMorte.month}+1) + '/' + (${autore.dataMorte.year}+1900)" />
+    	  <p th:text="'Data di morte: ' + ${autore.dataMorte.date} + '/' + (${autore.dataMorte.month}+1) + '/' + (${autore.dataMorte.year}+1900)"/>
     </div>
     <div> 
     	<form class="form-horizontal"  action="#" th:action="@{${action}}" method="post">

@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"titolo","autore_id"}))
-public class Quadro {
+public class Quadro implements Comparable<Quadro>{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,7 +85,12 @@ public class Quadro {
 		this.autore = autore;
 	}
 	
-	
-	
-
+	@Override
+	public int compareTo(Quadro quadro){
+		int result;
+		result = this.getTitolo().compareTo(quadro.getTitolo());
+		if (result == 0)
+			result = this.getAutore().compareTo(quadro.getAutore());
+		return result;
+	}
 }
