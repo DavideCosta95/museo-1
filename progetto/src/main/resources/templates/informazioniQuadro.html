@@ -28,7 +28,7 @@
 			<h1 th:text="${testo}"></h1>
 		</div>
 		<div>
-            <img th:if ="${quadro.immagine != null}" th:src="'/quadro/' + ${quadro.immagine}" th:alt ="${quadro.titolo}" height="200" width="150" style = "display:block;"/>
+        	<img th:if ="${quadro.immagine != null}" th:src="'/quadro/' + ${quadro.immagine}" th:alt ="${quadro.titolo}" height="200" width="150" style = "display:block;"/> 
         </div>
 	<div>
     	<p th:text="'Titolo: ' + ${quadro.titolo}" />

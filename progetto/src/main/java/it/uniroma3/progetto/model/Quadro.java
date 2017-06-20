@@ -33,6 +33,7 @@ public class Quadro implements Comparable<Quadro>{
 	@NotEmpty
 	private String dimensioni;
 	
+	//fetch di default
 	@ManyToOne
 	private Autore autore;
 	

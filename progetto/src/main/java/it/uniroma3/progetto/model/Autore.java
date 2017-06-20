@@ -47,7 +47,7 @@ public class Autore implements Comparable<Autore>{
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataMorte;
 	
-	@Autowired
+	//fetch di default
 	@OneToMany(mappedBy="autore", cascade= {CascadeType.REMOVE})
 	private List<Quadro> quadri;
  

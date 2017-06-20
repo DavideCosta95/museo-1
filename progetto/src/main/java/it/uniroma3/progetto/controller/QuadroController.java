@@ -53,7 +53,7 @@ public class QuadroController  {
 	@PostMapping("/inserisciQuadro")
 	public String convalidaQuadro(@Valid @ModelAttribute Quadro quadro, BindingResult bindingResult, Model model,
 			@RequestParam(value = "autore") Long autoreID,
-			@RequestParam(value = "immagine", required = false) MultipartFile immagine) {
+			@RequestParam(value = "immagineQuadro", required = false) MultipartFile immagine) {
 		if (bindingResult.hasErrors() || autoreID<0) {
 			List<Autore> autori = (List<Autore>) autoreService.findAll();
 			Collections.sort(autori);
@@ -73,21 +73,16 @@ public class QuadroController  {
 				if (!(quadro.getImmagine() == null || quadro.getImmagine().isEmpty())){
 					uploader.creaCartellaImmagini();
 					uploader.creaFileImmagine(immagine.getOriginalFilename(), immagine);
-					quadro.setImmagine(immagine.getOriginalFilename());
 				}
-				System.out.println("ttttttttttt");
 				Autore autore = autoreService.findById(autoreID);
 				quadro.setAutore(autore);
 				model.addAttribute("quadro",quadro);
-				System.out.println("primaADD");
 				quadroService.add(quadro);
-				System.out.println("dopoADD");
 				model.addAttribute("testo", "Quadro inserito");
 				model.addAttribute("titolo", "Quadro inserito");
 				model.addAttribute("action", "/pannelloAmministratore");
 				return "informazioniQuadro";
 			}catch(Exception e){
-				System.out.println("AAAAAAAAAAAAAAAAA "+e.toString());
 				List<Autore> autori = (List<Autore>) autoreService.findAll();
 				Collections.sort(autori);
 				model.addAttribute("autori",autori);
