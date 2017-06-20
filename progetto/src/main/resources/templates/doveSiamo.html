@@ -16,9 +16,9 @@
 				<a class="navbar-brand" th:href="@{/}">Home</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="navbar-header"><a href="#">Chi siamo</a></li>
-				<li><a href="#">Dove Siamo</a></li>
-				<li><a href="#">Contatti</a></li>
+			<li class="navbar-header"><a th:href="@{/chiSiamo}">Chi siamo</a></li>
+					<li><a th:href="@{/doveSiamo}">Dove Siamo</a></li>
+					<li><a th:href="@{/contatti}">Contatti</a></li>
 			</ul>
 			<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista
 				quadri</a> <a class="btn btn-lg bt-primary"
@@ -34,15 +34,11 @@
 		<div class="page-header">
 			<h1>Dove siamo</h1>
 		</div>
+		<h2 style="color:white">Indirizzi:</h2>
 		<p>
-		<h2>Indirizzi:</h2>
-		<p>Galleria, Via Vito Volterra, 62 Via Vito Volterra 62 Collegio
-			Didattico Ingegneria Elettronica – Via Vito Volterra 62 Collegio
-			Didattico Ingegneria Informatica – Via della Vasca Navale 79/81
-			Collegio Didattico Ingegneria Meccanica – Via della Vasca Navale
-			79/81</p>
-		<p>
-		<h2>Come Raggiungerci:</h2>
+		 Galleria, Via Vito Volterra, 62 Via Vito Volterra 62 
+		</p>
+		<h2 style="color:white">Come Raggiungerci:</h2>
 		<p>Fermate Metro Marconi e San Paolo Linea B Linee Autobus ATAC 23
 			– 670 L.go S.Leonardo Murialdo 770 Transito su Via della Vasca Navale
 			128 – 170 – 761 – 766 – 791 Transito su Viale Marconi</p>

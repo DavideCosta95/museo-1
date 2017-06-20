@@ -1,6 +1,5 @@
 package it.uniroma3.progetto.controller;
 
-import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,10 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.NoHandlerFoundException;
+
 
 import it.uniroma3.progetto.model.Autore;
 import it.uniroma3.progetto.model.Quadro;
@@ -34,24 +32,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String main() {
-		try{
-		File file= new File(this.getClass().getResource("/static/img/1.png").getFile());
-		System.out.println(file.getAbsolutePath());}
-		catch(Exception e){
-			System.out.println(e.toString());	
-		}
-
 		return "index";
-	}
-	
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public String handle(Exception ex) {
-	    return "redirect:/404";
-	}
-
-	@RequestMapping("/404")
-	public String NotFoudPage() {
-	    return "404";
 	}
 
 

@@ -12,9 +12,9 @@
 				<a class="navbar-brand" th:href="@{/}">Home</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="navbar-header"><a href="#">Chi siamo</a></li>
-					<li><a href="#">Dove Siamo</a></li>
-					<li><a href="#">Contatti</a></li>
+					<li class="navbar-header"><a th:href="@{/chiSiamo}">Chi siamo</a></li>
+					<li><a th:href="@{/doveSiamo}">Dove Siamo</a></li>
+					<li><a th:href="@{/contatti}">Contatti</a></li>
 				</ul>
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista quadri</a>
 				<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=autore)}">Lista autori</a>
