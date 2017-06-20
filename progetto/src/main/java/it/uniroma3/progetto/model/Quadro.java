@@ -35,6 +35,8 @@ public class Quadro implements Comparable<Quadro>{
 	
 	@ManyToOne
 	private Autore autore;
+	
+	private String immagine;
 
     protected Quadro() {}
     
@@ -77,6 +79,15 @@ public class Quadro implements Comparable<Quadro>{
 	public void setDimensioni(String dimensioni) {
 		this.dimensioni = dimensioni;
 	}
+	
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+
 	public Autore getAutore() {
 		return autore;
 	}

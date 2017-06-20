@@ -11,7 +11,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Home</a>
+				<a class="navbar-brand" th:href="@{/}">Home</a>
 				</div>
 				<ul class="nav navbar-nav">
 					<li class="navbar-header"><a th:href="@{/}">Chi siamo</a></li>
@@ -40,10 +40,10 @@
     	<p th:text="'Nazionalit&agrave; : ' + ${autore.nazionalita}"/>
     </div>
 	<div>
-    	<p th:text="'Data di nascita: ' + ${autore.dataNascita.date} + '/' + (${autore.dataNascita.month}+1) + '/' + (${autore.dataNascita.year}+1900)"/>
+		<p th:text="'Data di nascita: ' + ${autore.dataNascita.date} + '/' + (${autore.dataNascita.month}+1) + '/' + (${autore.dataNascita.year}+1900)"/>
     </div>
     	<div>
-    	  <p th:text="'Data di morte: ' + ${autore.dataMorte.date} + '/' + (${autore.dataMorte.month}+1) + '/' + (${autore.dataMorte.year}+1900)"/>
+    	<p th:text="'Data di morte: ' + ${autore.dataMorte.date} + '/' + (${autore.dataMorte.month}+1) + '/' + (${autore.dataMorte.year}+1900)"/>
     </div>
     <div> 
     	<form class="form-horizontal"  action="#" th:action="@{${action}}" method="post">

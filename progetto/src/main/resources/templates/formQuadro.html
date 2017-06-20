@@ -79,9 +79,13 @@
 					<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 				</select>
 				</div>
-			 <div id ="immagineQuadro" style = "margin-top:10px">Immagine Quadro: (.jpg) <input type = "file" name ="immagineQuadro" accept=".jpg"/></div>
+			 <div id ="immagine" style = "margin-top:10px">Immagine Quadro (.jpg)
+				 <input type = "file" name ="immagine" id ="immagine" accept=".jpg"/>
+				  <input type = "hidden" value="${immagine.originalFileName}" th:field="*{immagine}"/>
+			 </div>
 
 			<div class="col-sm-offset-2 col-sm-10">
+				<input type="hidden" value="${quadro.id}" th:field="*{id}" />
 				<button type="submit" class="btn btn-info active" style="background-color: #5079B4;" th:text="${testoBottone}"></button>
 			</div>
 		</form>

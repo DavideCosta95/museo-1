@@ -153,4 +153,14 @@ public class AutoreController {
 		model.addAttribute("autorizzato",  "autorizzato");
 		return "informazioniAutore";
 	}
+	
+	@GetMapping(value = "/dettagliAutore")
+	public String dettagliAutore(@ModelAttribute("id") Long id, Model model){
+		Autore autore = autoreService.findById(id);
+		model.addAttribute("autore", autore);
+		model.addAttribute("testo", "Dettagli di:");
+		model.addAttribute("titolo", autore.getNome() + " " + autore.getCognome());
+		model.addAttribute("action", "/");
+		return "informazioniAutore";
+	}
 }

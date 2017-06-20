@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.progetto.model.Autore;
 import it.uniroma3.progetto.model.Quadro;
 import it.uniroma3.progetto.service.AutoreService;
 import it.uniroma3.progetto.service.QuadroService;
+import it.uniroma3.progetto.service.UploaderImmagine;
 
 
 @Controller
@@ -26,6 +28,9 @@ public class QuadroController  {
 
 	@Autowired
 	private AutoreService autoreService;
+	
+	@Autowired
+	private UploaderImmagine uploader;
 
 	@GetMapping("/inserisciQuadro")
 	public String mostraFormQuadro(Quadro quadro, Model model) {
@@ -34,7 +39,7 @@ public class QuadroController  {
 		if(autori.isEmpty()){
 			model.addAttribute("nessunAutoreInserisciQuadro",true);
 			return "pannelloAmministratore";
-		}else{
+		}else{			
 			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 			model.addAttribute("action", "/inserisciQuadro");
@@ -47,9 +52,9 @@ public class QuadroController  {
 
 	@PostMapping("/inserisciQuadro")
 	public String convalidaQuadro(@Valid @ModelAttribute Quadro quadro, BindingResult bindingResult, Model model,
-			@RequestParam(value = "autore") Long autoreID) {
-		
-		if (bindingResult.hasErrors() || autoreID<0) { 
+			@RequestParam(value = "autore") Long autoreID,
+			@RequestParam(value = "immagine", required = false) MultipartFile immagine) {
+		if (bindingResult.hasErrors() || autoreID<0) {
 			List<Autore> autori = (List<Autore>) autoreService.findAll();
 			Collections.sort(autori);
 			model.addAttribute("autori",autori);
@@ -65,15 +70,24 @@ public class QuadroController  {
 		}
 		else{
 			try{
+				if (!(quadro.getImmagine() == null || quadro.getImmagine().isEmpty())){
+					uploader.creaCartellaImmagini();
+					uploader.creaFileImmagine(immagine.getOriginalFilename(), immagine);
+					quadro.setImmagine(immagine.getOriginalFilename());
+				}
+				System.out.println("ttttttttttt");
 				Autore autore = autoreService.findById(autoreID);
 				quadro.setAutore(autore);
 				model.addAttribute("quadro",quadro);
+				System.out.println("primaADD");
 				quadroService.add(quadro);
+				System.out.println("dopoADD");
 				model.addAttribute("testo", "Quadro inserito");
 				model.addAttribute("titolo", "Quadro inserito");
 				model.addAttribute("action", "/pannelloAmministratore");
 				return "informazioniQuadro";
 			}catch(Exception e){
+				System.out.println("AAAAAAAAAAAAAAAAA "+e.toString());
 				List<Autore> autori = (List<Autore>) autoreService.findAll();
 				Collections.sort(autori);
 				model.addAttribute("autori",autori);
@@ -147,7 +161,7 @@ public class QuadroController  {
 
 	@PostMapping("/confermaModificaQuadro")
 	public String confermaModifica(@Valid @ModelAttribute Quadro quadro,BindingResult bindingResult, Model model,
-			@RequestParam(value = "id", required = true) Long autore){
+			@RequestParam(value = "autore", required = true) Long autore){
 
 		if(bindingResult.hasErrors()) {
 			List<Autore> autori= (List<Autore>) autoreService.findAll();
@@ -224,18 +238,16 @@ public class QuadroController  {
 			model.addAttribute("testoBottone", "Elimina");
 			return "selezionaQuadro";
 		}
-	}	
+	}
 	
-	@GetMapping("/mostraAutoreQuadro")
-	public String mostraAutoreQuadro(@RequestParam(value = "autore", required = true) Long autoreSelezionatoID,
-			@RequestParam(value = "idQuadro") Long idQuadro, Model model){
-		Autore autoreSelezionato = autoreService.findById(autoreSelezionatoID);
-		Quadro quadro = quadroService.findById(idQuadro);
-		model.addAttribute("autore", autoreSelezionato);
-		model.addAttribute("titolo", autoreSelezionato.getNome() + " " + autoreSelezionato.getCognome());
-		model.addAttribute("testo", "Autore di: " + quadro.getTitolo());
-		model.addAttribute("action",  "/");
-		return "informazioniAutore";
+	@GetMapping(value = "/dettagliQuadro")
+	public String dettagliQuadro(@ModelAttribute("id") Long id, Model model){
+		Quadro quadro = quadroService.findById(id);
+		model.addAttribute("quadro", quadro);
+		model.addAttribute("testo", "Dettagli di " + quadro.getTitolo());
+		model.addAttribute("titolo", quadro.getTitolo());
+		model.addAttribute("action", "/");
+		return "informazioniQuadro";
 	}
 }
 

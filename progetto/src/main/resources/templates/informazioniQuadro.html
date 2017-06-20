@@ -27,6 +27,9 @@
 		<div class="page-header">
 			<h1 th:text="${testo}"></h1>
 		</div>
+		<div>
+            <img th:if ="${quadro.immagine != null}" th:src="'/quadro/' + ${quadro.immagine}" th:alt ="${quadro.titolo}" height="200" width="150" style = "display:block;"/>
+        </div>
 	<div>
     	<p th:text="'Titolo: ' + ${quadro.titolo}" />
     </div>
@@ -41,7 +44,7 @@
       </div>
    	<div>
     	<p>
-    	Autore: <a th:text="${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}" th:href="@{/mostraAutoreQuadro(autore=${quadro.autore.id},idQuadro=${quadro.id})}"></a>
+    	Autore: <a th:text="${quadro.autore.nome} + ' ' + ${quadro.autore.cognome}" th:href="@{/dettagliAutore(id=${quadro.id})}"></a>
     	</p>
     </div>
         <div> 

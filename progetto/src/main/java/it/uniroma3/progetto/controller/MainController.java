@@ -13,7 +13,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -85,25 +84,5 @@ public class MainController {
 			model.addAttribute("autori",autori);
 		}
 		return "lista";
-	}
-	
-	@GetMapping(value = "/dettagliQuadro")
-	public String dettagliQuadro(@ModelAttribute("id") Long id, Model model){
-		Quadro quadro = quadroService.findById(id);
-		model.addAttribute("quadro", quadro);
-		model.addAttribute("testo", "Dettagli di:");
-		model.addAttribute("titolo", quadro.getTitolo());
-		model.addAttribute("action", "/");
-		return "informazioniQuadro";
-	}
-	
-	@GetMapping(value = "/dettagliAutore")
-	public String dettagliAutore(@ModelAttribute("id") Long id, Model model){
-		Autore autore = autoreService.findById(id);
-		model.addAttribute("autore", autore);
-		model.addAttribute("testo", "Dettagli di:");
-		model.addAttribute("titolo", autore.getNome() + " " + autore.getCognome());
-		model.addAttribute("action", "/");
-		return "informazioniAutore";
 	}
 }
