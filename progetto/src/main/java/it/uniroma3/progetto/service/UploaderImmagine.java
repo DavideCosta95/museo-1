@@ -4,6 +4,9 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.servlet.ServletContextEvent;
+
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,12 +29,14 @@ public class UploaderImmagine {
 
 	public void creaFileImmagine(String nome, MultipartFile file) {
         try {
-            File immagine = new File(ABSOLUTE_PATH_CARTELLA_IMMAGINI + nome);
+
+            File immagine = new File(this.getClass().getResource("/static/immagini/").getPath()+""+nome);
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(immagine));
             stream.write(file.getBytes());
             stream.close();
         } catch (Exception e) {
         	e.printStackTrace();
+     
         }
     }
 	

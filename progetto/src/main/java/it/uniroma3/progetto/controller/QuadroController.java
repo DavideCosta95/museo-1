@@ -70,9 +70,10 @@ public class QuadroController  {
 		}
 		else{
 			try{
-				if (!(quadro.getImmagine() == null || quadro.getImmagine().isEmpty())){
+				if (!(immagine == null || immagine.isEmpty())){
 					uploader.creaCartellaImmagini();
 					uploader.creaFileImmagine(immagine.getOriginalFilename(), immagine);
+					quadro.setImmagine(immagine.getOriginalFilename());
 				}
 				Autore autore = autoreService.findById(autoreID);
 				quadro.setAutore(autore);
