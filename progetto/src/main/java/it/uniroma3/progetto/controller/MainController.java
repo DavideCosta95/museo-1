@@ -1,5 +1,6 @@
 package it.uniroma3.progetto.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +12,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import it.uniroma3.progetto.model.Autore;
 import it.uniroma3.progetto.model.Quadro;
@@ -34,17 +36,20 @@ public class MainController {
 	public String main() {
 		return "index";
 	}
+	
+	@ExceptionHandler(NoHandlerFoundException.class)
+	public String handle(Exception ex) {
+	    return "redirect:/404";
+	}
+
+	@RequestMapping("/404")
+	public String NotFoudPage() {
+	    return "404";
+	}
 
 
 	@RequestMapping("/login")
 	public String error() {
-		return "formLogin";
-	}
-	
-	
-	@RequestMapping("/login-error.html")
-	public String loginError(Model model) {
-		model.addAttribute("loginError", true);
 		return "formLogin";
 	}
 	
@@ -68,13 +73,15 @@ public class MainController {
 		if(tipoLista.equals("quadro")) {
 			model.addAttribute("testo", "La nostra collezione");
 			model.addAttribute("titolo", "Lista quadri");
-			List<Quadro> quadri = (List<Quadro>) quadroService.findAll(); 
+			List<Quadro> quadri = (List<Quadro>) quadroService.findAll();
+			Collections.sort(quadri);
 			model.addAttribute("quadri",quadri);
 		}
 		if(tipoLista.equals("autore")) {
 			model.addAttribute("testo", "I nostri autori");
 			model.addAttribute("titolo", "Lista autori");
-			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+			List<Autore> autori = (List<Autore>) autoreService.findAll();
+			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 		}
 		return "lista";

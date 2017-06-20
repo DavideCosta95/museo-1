@@ -1,5 +1,6 @@
 package it.uniroma3.progetto.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ public class AutoreController {
 	@GetMapping("/inserisciAutore")
 	public String mostraFormAutore(Autore autore, Model model) {
 		model.addAttribute("action", "/inserisciAutore");
-		model.addAttribute("testo", "Inserisci un nuovo autore:");
+		model.addAttribute("testo", "Nuovo autore");
 		model.addAttribute("titolo", "Nuovo autore");
 		model.addAttribute("testoBottone", "Inserisci");
 		return "formAutore";
@@ -36,7 +37,7 @@ public class AutoreController {
 		model.addAttribute("autore", autore);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("action", "/inserisciAutore");
-			model.addAttribute("testo", "Inserisci un nuovo autore:");
+			model.addAttribute("testo", "Nuovo autore");
 			model.addAttribute("titolo", "Nuovo autore");
 			model.addAttribute("testoBottone", "Inserisci");
 			return "formAutore";
@@ -45,17 +46,14 @@ public class AutoreController {
 			try{
 				autoreService.add(autore);
 				model.addAttribute("autore",autore);
-				model.addAttribute("testo", "Autore inserito:");
+				model.addAttribute("testo", "Autore inserito");
 				model.addAttribute("titolo", "Autore inserito");
 				model.addAttribute("testoBottone", "Inserisci");
-				model.addAttribute("titolo", "Autore inserito");
-				model.addAttribute("testo", "Hai inserito l'autore:");
 				model.addAttribute("action",  "/pannelloAmministratore");
-				model.addAttribute("autorizzato",  "autorizzato");
 				return "informazioniAutore";
 			}catch(Exception e) {
 				model.addAttribute("action", "/inserisciAutore");
-				model.addAttribute("testo", "Inserisci un nuovo autore:");
+				model.addAttribute("testo", "Nuovo autore");
 				model.addAttribute("titolo", "Nuovo autore");
 				model.addAttribute("testoBottone", "Inserisci");
 				return "formAutore";
@@ -70,9 +68,10 @@ public class AutoreController {
 			model.addAttribute("nessunAutoreModificaAutore",true);
 			return "pannelloAmministratore";
 		}
+		Collections.sort(autori);
 		model.addAttribute("autori",autori);
 		model.addAttribute("action", "/modificaAutore");
-		model.addAttribute("testo", "Modifica autore:");
+		model.addAttribute("testo", "Modifica autore");
 		model.addAttribute("titolo", "Modifica autore");
 		model.addAttribute("testoBottone", "Modifica");
 		return "selezionaAutore";
@@ -83,9 +82,10 @@ public class AutoreController {
 		if(autoreSelezionatoID<0){
 			model.addAttribute("erroreAutore", true);
 			List<Autore> autori = (List<Autore>) autoreService.findAll();
+			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 			model.addAttribute("action", "/modificaAutore");
-			model.addAttribute("testo", "Seleziona autore:");
+			model.addAttribute("testo", "Seleziona autore");
 			model.addAttribute("titolo", "Seleziona autore");
 			model.addAttribute("testoBottone", "Seleziona");
 			return "selezionaAutore";
@@ -93,7 +93,7 @@ public class AutoreController {
 		Autore autore= autoreService.findById(autoreSelezionatoID);
 		model.addAttribute("autore",autore);
 		model.addAttribute("action", "/confermaModificaAutore");
-		model.addAttribute("testo", "Modifica autore:");
+		model.addAttribute("testo", "Modifica autore");
 		model.addAttribute("titolo", "Modifica autore");
 		model.addAttribute("testoBottone", "Modifica");
 		return "formAutore";
@@ -104,7 +104,7 @@ public class AutoreController {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("autore",autore);
 			model.addAttribute("action", "/confermaModificaAutore");
-			model.addAttribute("testo", "Modifica autore:");
+			model.addAttribute("testo", "Modifica autore");
 			model.addAttribute("titolo", "Modifica autore");
 			model.addAttribute("testoBottone", "Modifica");
 			return "formAutore";
@@ -115,7 +115,7 @@ public class AutoreController {
 				model.addAttribute("autore",autore);
 				autoreService.add(autore);
 				model.addAttribute("titolo", "Autore modificato");
-				model.addAttribute("testo", "Nuovi dati dell'autore:");
+				model.addAttribute("testo", "Autore modificato");
 				model.addAttribute("action",  "/pannelloAmministratore");
 				model.addAttribute("autorizzato",  "autorizzato");
 				return "informazioniAutore";
@@ -133,10 +133,11 @@ public class AutoreController {
 			model.addAttribute("nessunAutoreEliminaAutore",true);
 			return "pannelloAmministratore";
 		}
+		Collections.sort(autori);
 		model.addAttribute("autori",autori);
 		model.addAttribute("action", "/eliminaAutore");
 		model.addAttribute("testoBottone", "Elimina");
-		model.addAttribute("testo", "Elimina autore:");
+		model.addAttribute("testo", "Elimina autore");
 		model.addAttribute("titolo", "Elimina autore");
 		return "selezionaAutore";
 	}
@@ -147,11 +148,9 @@ public class AutoreController {
 		autoreService.delete(autore);
 		model.addAttribute("autore", autore);
 		model.addAttribute("titolo", "Autore eliminato");
-		model.addAttribute("testo", "Hai eliminato l'autore:");
+		model.addAttribute("testo", "Autore eliminato");
 		model.addAttribute("action",  "/pannelloAmministratore");
 		model.addAttribute("autorizzato",  "autorizzato");
 		return "informazioniAutore";
 	}
-	
-	
 }

@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome","cognome"}))
-public class Autore {
+public class Autore implements Comparable<Autore>{
 
 
 	@Id
@@ -107,5 +107,14 @@ public class Autore {
 
 	public void setQuadri(List<Quadro> quadri) {
 		this.quadri = quadri;
+	}
+	
+	@Override
+	public int compareTo(Autore autore){
+		int result;
+		result = this.getNome().compareTo(autore.getNome());
+		if (result == 0)
+			result = this.getCognome().compareTo(autore.getCognome());
+		return result;
 	}
 }

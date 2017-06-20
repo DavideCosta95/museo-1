@@ -13,8 +13,8 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Home</a>
-				</div>
+				<a class="navbar-brand" th:ref="@{/}">Home</a>
+			</div>
 				<ul class="nav navbar-nav">
 					<li class="navbar-header"><a href="#">Chi siamo</a></li>
 					<li><a href="#">Dove Siamo</a></li>
@@ -37,66 +37,48 @@
 
 			<div class="form-group">
 
-				<label class="control-label col-sm-2" for="#{label.nome}">Nome:</label>
+				<label class="control-label col-sm-2" for="#{label.nome}" th:text="#{label.nome}">Nome:</label>
 				<div class="col-sm-10">
 					<input type="text" th:field="*{nome}" />
 					<span th:if="${#fields.hasErrors('nome')}" th:text="#{label.mandatory}" style="color:black">Error</span>
 				</div>
-
-			</div>
-
-
-
-			<div class="form-group">
-
-				<label class="control-label col-sm-2" for="#{label.cognome}">
-					Cognome: </label>
-				<div class="col-sm-10">
-					<input type="text" th:field="*{cognome}" /> <span
-						th:if="${#fields.hasErrors('cognome')}"
-						th:text="#{label.mandatory}"
-						style="color:black">Error</span>
-				</div>
-
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.dataNascita}">Data
-					di nascita: </label>
+				<label class="control-label col-sm-2" for="#{label.cognome}" th:text="#{label.cognome}">Cognome:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{dataNascita}" /> <span
-						th:if="${#fields.hasErrors('dataNascita')}"
-						th:text="#{label.data}" style="color:black">Error</span>
+					<input type="text" th:field="*{cognome}" />
+					<span th:if="${#fields.hasErrors('cognome')}" th:text="#{label.mandatory}" style="color:black">Error</span>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.dataMorte}">
-					Data di morte: </label>
+				<label class="control-label col-sm-2" for="#{label.dataNascita}" th:text="#{label.dataNascita}">Data di nascita:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{dataMorte}" /> <span
-						th:if="${#fields.hasErrors('dataMorte')}" th:text="#{label.data}"
-						style="color:black">Error</span>
+					<input type="text" th:field="*{dataNascita}" />
+					<span th:if="${#fields.hasErrors('dataNascita')}" th:text="#{label.data}" style="color:black">Error</span>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2"> Nazionalit&agrave;:
-				</label>
+				<label class="control-label col-sm-2" for="#{label.dataMorte}" th:text="#{label.dataMorte}">Data di morte:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{nazionalita}" /> <span
-						th:if="${#fields.hasErrors('nazionalita')}"
-						th:text="#{label.mandatory}"
-						style="color:black">Error</span>
+					<input type="text" th:field="*{dataMorte}" />
+					<span th:if="${#fields.hasErrors('dataMorte')}" th:text="#{label.data}" style="color:black">Error</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2"> Nazionalit&agrave;</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{nazionalita}" />
+					<span th:if="${#fields.hasErrors('nazionalita')}" th:text="#{label.mandatory}" style="color:black">Error</span>
 				</div>
 			</div>
 			<input type="hidden" value="${autore.id}" th:field="*{id}" />
-
 			 <div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-info active" style="background-color:#5079B4;" th:text="${testoBottone}"></button>
 			</div>
-
-			
 		</form>
 	</div>
 

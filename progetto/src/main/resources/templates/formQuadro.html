@@ -2,11 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title th:text="${titolo}"></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-<link href="../css/form.css" rel="stylesheet" />
+<link href="../css/form.css" rel="stylesheet"/>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
  <script type="text/javascript">
 	$(document).ready(function () {
@@ -26,8 +25,8 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Home</a>
-				</div>
+				<a class="navbar-brand" th:href="@{/}">Home</a>
+			</div>
 				<ul class="nav navbar-nav">
 					<li class="navbar-header"><a href="#">Chi siamo</a></li>
 					<li><a href="#">Dove Siamo</a></li>
@@ -38,76 +37,54 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a th:href="@{/pannelloAmministratore}"><span class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
 				</ul>
-
 			</div>
 	</nav>
 	<div class="container">
 		<div class="page-header">
 			<h1 th:text="${testo}"></h1>
 		</div>
-		<form class="form-horizontal" action="#" th:action="@{${action}}"
-			th:object="${quadro}" method="post">
-
+		<form class="form-horizontal" action="#" th:action="@{${action}}" th:object="${quadro}" method="post">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.titolo}">Titolo:
-				</label>
+				<label class="control-label col-sm-2" for="#{label.titolo}" th:text="#{label.titolo}">Titolo:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{titolo}" /> <span
-						th:if="${#fields.hasErrors('titolo')}"
-						th:text="#{label.mandatory}"
-						style="color:black;"> Error</span>
+					<input type="text" th:field="*{titolo}"/>
+					<span th:if="${#fields.hasErrors('titolo')}" th:text="#{label.mandatory}" style="color:black;">Error</span>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.anno}">Anno:</label>
+				<label class="control-label col-sm-2" for="#{label.anno}" th:text="#{label.anno}">Anno:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{anno}" /> <span
-						th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}"
-						style="color:black"> Error</span>
+					<input type="text" th:field="*{anno}" />
+					<span th:if="${#fields.hasErrors('anno')}" th:text="#{label.number}" style="color:black">Error</span>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.tecnica}">Tecnica:</label>
+				<label class="control-label col-sm-2" for="#{label.tecnica}" th:text="#{label.tecnica}">Tecnica:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{tecnica}" /> <span
-						th:if="${#fields.hasErrors('tecnica')}"
-						th:text="#{label.mandatory}"
-						style="color:black">Error</span>
+					<input type="text" th:field="*{tecnica}" />
+					<span th:if="${#fields.hasErrors('tecnica')}" th:text="#{label.mandatory}" style="color:black">Error</span>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.dimensioni}">
-					Dimensioni:</label>
+				<label class="control-label col-sm-2" for="#{label.dimensioni}" th:text="#{label.dimensioni}">Dimensioni:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{dimensioni}" /> <span
-						th:if="${#fields.hasErrors('dimensioni')}"
-						th:text="#{label.mandatory}"
-						style="color:black">Error</span>
+					<input type="text" th:field="*{dimensioni}" />
+					<span th:if="${#fields.hasErrors('dimensioni')}" th:text="#{label.mandatory}" style="color:black">Error</span>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="#{label.autore}">
-					Autore:</label> <select name="autore" id="autoUpdate" class="autoUpdate">
-
-					<option value="" th:disabled="true" th:selected="true">Seleziona
-						un autore...</option>
-					<option th:each="autore: ${autori}" th:value="${autore.id}"
-						th:text="${autore.nome} + ' ' + ${autore.cognome}" />
+				<label class="control-label col-sm-2" for="#{label.autore}" th:text="#{label.autore}">Autore:</label>
+				<select name="autore" id="autoUpdate" class="autoUpdate">
+					<option value="-1" th:disabled="true" th:selected="true">Seleziona un autore...</option>
+					<option th:each="autore: ${autori}" th:value="${autore.id}" th:text="${autore.nome} + ' ' + ${autore.cognome}" />
 				</select>
 				</div>
-			
-		
-		
-			 <div id ="immagineQuadro" style = "margin-top:10px">Immagine Quadro: (SOLO FORMATO .JPG) <input type = "file" name ="immagineQuadro" accept=".jpg"/></div>
-		
+			 <div id ="immagineQuadro" style = "margin-top:10px">Immagine Quadro: (.jpg) <input type = "file" name ="immagineQuadro" accept=".jpg"/></div>
 
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-info active"
-					style="background-color: #5079B4;" th:text="${testoBottone}"></button>
+				<button type="submit" class="btn btn-info active" style="background-color: #5079B4;" th:text="${testoBottone}"></button>
 			</div>
-
-
-</form>
-</div>
+		</form>
+	</div>
 </body>
 </html>

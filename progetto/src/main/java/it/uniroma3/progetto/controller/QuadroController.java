@@ -1,5 +1,6 @@
 package it.uniroma3.progetto.controller;
 
+import java.util.Collections;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,10 @@ public class QuadroController  {
 			model.addAttribute("nessunAutoreInserisciQuadro",true);
 			return "pannelloAmministratore";
 		}else{
+			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 			model.addAttribute("action", "/inserisciQuadro");
-			model.addAttribute("testo", "Inserisci un nuovo quadro:");
+			model.addAttribute("testo", "Nuovo quadro");
 			model.addAttribute("titolo", "Nuovo quadro");
 			model.addAttribute("testoBottone", "Inserisci");
 			return "formQuadro";
@@ -48,12 +50,13 @@ public class QuadroController  {
 			@RequestParam(value = "autore") Long autoreID) {
 		
 		if (bindingResult.hasErrors() || autoreID<0) { 
-			List<Autore> autori = (List<Autore>) autoreService.findAll(); 
+			List<Autore> autori = (List<Autore>) autoreService.findAll();
+			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 			model.addAttribute("quadro", quadro);
 			model.addAttribute("autore", autoreID);
 			model.addAttribute("action", "/inserisciQuadro");
-			model.addAttribute("testo", "Inserisci un nuovo quadro:");
+			model.addAttribute("testo", "Nuovo quadro");
 			model.addAttribute("titolo", "Nuovo quadro");
 			model.addAttribute("testoBottone", "Inserisci");
 				if(autoreID<0)
@@ -66,17 +69,18 @@ public class QuadroController  {
 				quadro.setAutore(autore);
 				model.addAttribute("quadro",quadro);
 				quadroService.add(quadro);
-				model.addAttribute("testo", "Quadro inserito:");
+				model.addAttribute("testo", "Quadro inserito");
 				model.addAttribute("titolo", "Quadro inserito");
 				model.addAttribute("action", "/pannelloAmministratore");
 				return "informazioniQuadro";
 			}catch(Exception e){
 				List<Autore> autori = (List<Autore>) autoreService.findAll();
+				Collections.sort(autori);
 				model.addAttribute("autori",autori);
 				model.addAttribute("quadro", quadro);
 				model.addAttribute("autore", autoreID);
 				model.addAttribute("action", "/inserisciQuadro");
-				model.addAttribute("testo", "Inserisci un nuovo quadro:");
+				model.addAttribute("testo", "Nuovo quadro");
 				model.addAttribute("titolo", "Nuovo quadro");
 				model.addAttribute("testoBottone", "Inserisci");
 				return "formQuadro";
@@ -93,9 +97,10 @@ public class QuadroController  {
 			model.addAttribute("nessunQuadroModificaQuadro",true);
 			return "pannelloAmministratore";
 		}
+		Collections.sort(autori);
 		model.addAttribute("autori",autori);
 		model.addAttribute("action", "/modificaQuadro");
-		model.addAttribute("testo", "Seleziona quadro:");
+		model.addAttribute("testo", "Seleziona quadro");
 		model.addAttribute("titolo", "Seleziona quadro");
 		model.addAttribute("testoBottone", "Seleziona");
 		return "selezionaQuadro";
@@ -108,7 +113,7 @@ public class QuadroController  {
 		
 		if(autoreSelezionatoID<0) {
 			model.addAttribute("action", "/modificaQuadro");
-			model.addAttribute("testo", "Seleziona quadro:");
+			model.addAttribute("testo", "Seleziona quadro");
 			model.addAttribute("titolo", "Seleziona quadro");
 			model.addAttribute("testoBottone", "Seleziona");
 			return "selezionaQuadro";
@@ -121,19 +126,19 @@ public class QuadroController  {
 		for(Quadro q : quadriAutoreSelezionato)
 			if(q.getTitolo().equals(titoloQuadroSelezionato))
 				quadroTrovato = q;
-
+		Collections.sort(autori);
 		model.addAttribute("autori",autori);
 
 		if (quadroTrovato != null) {
 			model.addAttribute("quadro", quadroTrovato);
 			model.addAttribute("action", "/confermaModificaQuadro");
-			model.addAttribute("testo", "Modifica quadro:");
+			model.addAttribute("testo", "Modifica quadro");
 			model.addAttribute("titolo", "Modifica quadro");
 			model.addAttribute("testoBottone", "Modifica");
 			return "formQuadro";
 		} else {
 			model.addAttribute("action", "/modificaQuadro");
-			model.addAttribute("testo", "Seleziona quadro:");
+			model.addAttribute("testo", "Seleziona quadro");
 			model.addAttribute("titolo", "Seleziona quadro");
 			model.addAttribute("testoBottone", "Seleziona");
 			return "selezionaQuadro";
@@ -146,9 +151,10 @@ public class QuadroController  {
 
 		if(bindingResult.hasErrors()) {
 			List<Autore> autori= (List<Autore>) autoreService.findAll();
+			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 			model.addAttribute("action", "/confermaModificaQuadro");
-			model.addAttribute("testo", "Modifica quadro:");
+			model.addAttribute("testo", "Modifica quadro");
 			model.addAttribute("titolo", "Modifica quadro");
 			model.addAttribute("testoBottone", "Modifica");
 			return "formQuadro";
@@ -159,13 +165,13 @@ public class QuadroController  {
 			model.addAttribute("quadro",quadro);
 			try{
 				quadroService.add(quadro);
-				model.addAttribute("testo", "Nuovi dati del quadro:");
-				model.addAttribute("titolo", "Quadro modificato:");
+				model.addAttribute("testo", "Quadro modificato");
+				model.addAttribute("titolo", "Quadro modificato");
 				model.addAttribute("action", "/pannelloAmministratore");
 				return "informazioniQuadro";
 			}catch(Exception e){
 				model.addAttribute("action", "/confermaModificaQuadro");
-				model.addAttribute("testo", "Modifica quadro:");
+				model.addAttribute("testo", "Modifica quadro");
 				model.addAttribute("titolo", "Modifica quadro");
 				model.addAttribute("testoBottone", "Modifica");
 				return "formQuadro";
@@ -181,9 +187,10 @@ public class QuadroController  {
 			model.addAttribute("nessunQuadroEliminaQuadro",true);
 			return "pannelloAmministratore";
 		}
+		Collections.sort(autori);
 		model.addAttribute("autori",autori);
 		model.addAttribute("action", "/eliminaQuadro");
-		model.addAttribute("testo", "Elimina quadro:");
+		model.addAttribute("testo", "Elimina quadro");
 		model.addAttribute("titolo", "Elimina quadro");
 		model.addAttribute("testoBottone", "Elimina");
 		return "selezionaQuadro";
@@ -203,15 +210,16 @@ public class QuadroController  {
 			quadroService.delete(quadroTrovato);
 			model.addAttribute("quadro", quadroTrovato);
 			model.addAttribute("titolo", "Quadro eliminato");
-			model.addAttribute("testo", "Hai eliminato il quadro:");
+			model.addAttribute("testo", "Quadro eliminato");
 			model.addAttribute("action", "/pannelloAmministratore");
 			return "informazioniQuadro";
 		}
 		catch(Exception e){
 			List<Autore> autori= (List<Autore>) autoreService.findAll();
+			Collections.sort(autori);
 			model.addAttribute("autori",autori);
 			model.addAttribute("action", "/eliminaQuadro");
-			model.addAttribute("testo", "Elimina quadro:");
+			model.addAttribute("testo", "Elimina quadro");
 			model.addAttribute("titolo", "Elimina quadro");
 			model.addAttribute("testoBottone", "Elimina");
 			return "selezionaQuadro";
