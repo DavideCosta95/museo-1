@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="${titolo}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link href="../css/form.css" rel="stylesheet" />
+</head>
+<body>
+	<!-- inverte i colori della barra -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/}">Home</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="navbar-header"><a href="#">Chi siamo</a></li>
+				<li><a href="#">Dove Siamo</a></li>
+				<li><a href="#">Contatti</a></li>
+			</ul>
+			<a class="btn btn-lg bt-primary" th:href="@{/lista(tipo=quadro)}">Lista
+				quadri</a> <a class="btn btn-lg bt-primary"
+				th:href="@{/lista(tipo=autore)}">Lista autori</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{/pannelloAmministratore}"><span
+						class="glyphicon glyphicon-log-in"></span> Area Riservata</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<div class="container">
+		<div class="page-header">
+			<h1> Chi siamo</h1>
+		</div>
+	
+	<p>Lorem Ipsum "Neque porro quisquam est qui dolorem ipsum quia
+		dolor sit amet, consectetur, adipisci velit..." "Non c’è nessuno a cui
+		piaccia il dolore in sé, che lo ricerchi e che voglia riceverlo,
+		semplicemente perché è dolore..." Lorem ipsum dolor sit amet,
+		consectetur adipiscing elit. Praesent eleifend, nibh vitae eleifend
+		feugiat, dolor leo luctus mi, finibus viverra orci nisi mattis massa.
+		Morbi sagittis sapien vel vehicula cursus. Morbi luctus nunc eu enim
+		placerat, at volutpat lectus vehicula. Curabitur pharetra hendrerit
+		porttitor. Cras congue ultricies turpis vel ornare. Sed nec velit sed
+		lacus maximus iaculis tincidunt id arcu. Ut sed elit ut magna lacinia
+		hendrerit congue in augue. Mauris dictum felis orci, eu laoreet mi
+		sagittis vitae. Morbi iaculis vitae lacus vel aliquet. Duis non
+		molestie dolor. Vivamus ornare ante metus, quis gravida leo malesuada
+		a. Pellentesque hendrerit urna a tortor suscipit, nec molestie turpis
+		iaculis. Duis ac felis ac nulla consequat varius eleifend non elit.
+		Vestibulum pharetra bibendum dui, quis congue tellus blandit sit amet.
+		Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+		per inceptos himenaeos. Donec cursus tincidunt volutpat. Etiam
+		dignissim imperdiet diam. Etiam vitae libero nisl. Praesent
+		sollicitudin quis erat eget varius. Etiam lorem dui, tempus ac iaculis
+		eu, venenatis vel leo. Etiam sagittis nibh et dapibus maximus. Sed
+		viverra lacinia ornare. Integer elit tortor, auctor sit amet dui eu,
+		porta placerat orci. Vestibulum fringilla purus non vestibulum
+		vestibulum. Phasellus semper augue non dictum mollis. Duis dictum
+		mauris venenatis dictum tincidunt.</p>
+		</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
